@@ -1,0 +1,41 @@
+<!-- Content -->
+<div class="container project-view">
+  <div class="row">
+    <div class="{{#if edit_item}}col-md-9{{else}}col-md-12{{/if}}">
+      {{#unless edit_item}}
+      <div class="text-center">
+        <h1>{{item.title}}</h1>
+        <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+        <div class="spacer-single"></div>
+      </div>
+      {{/unless}}
+      <div class="img-container text-center">
+        {{#if forSubslider}}
+          <img id="image" src="{{#if item}}{{item}}
+          {{else}}/images/placeholder/profile_placeholder.png{{/if}}" class="img-responsive" alt="Picture">
+        {{else}}
+          <img id="image" src="{{#if item.photo}}{{item.photo}}
+          {{else}}/images/placeholder/profile_placeholder.png{{/if}}" class="img-responsive" alt="Picture">
+        {{/if}}
+      </div>
+    </div>
+    <div class="col-md-3 docs-buttons">
+      {{#if edit_item}}
+      <form id="crop-form" class="theme_form" action="{{url}}" method="post" accept-charset="utf-8">
+        {{#unless forSubslider}}
+        <div class="form-group">
+          <label for="tour_title">Name</label>
+          <input type="text" class="form-control de_light" name="item_title" value="{{item.title}}" id="tour_title">
+        </div>
+        {{/unless}}
+        <div class="btn-group">
+          {{#unless forSubslider}}
+            <input type="submit" id="submit" name="save_button" class="btn btn-line" value="Save">
+          {{/unless}}
+          <input type="submit" id="submit" name="delete_button" class="btn btn-line" value="Delete">
+        </div>
+      </form>
+      {{/if}}
+    </div>
+  </div>
+</div>

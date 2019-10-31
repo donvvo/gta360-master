@@ -1,0 +1,72 @@
+<div id="content">
+  <div class="container inner-padding">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+        <h1>Edit Gallery Photos</h1>
+        <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+        <p style="text-align: left;">Each type of photo has its own ordering priority.
+          Currently, photos are ordered alphabetically based on its type, and priority sets ordering within each type,
+          higher number meaning higher priority in ordering.
+          Choose a number between -10 to 10 for priority. Click delete checkboxes to delete that photo.
+          Click on a photo to view it in bigger view. </p>
+      </div>
+    </div>
+
+    <!-- Tour list widget starts-->
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <form class="theme_form" method="POST" accept-charset="utf-8">
+          <div class="row" style="padding: 20px 0 40px;">
+            <div class="col-xs-5 text-left">
+              <a href="{{backUrl}}" class="btn btn-line btn-line-black no-scrollto">Back to Tour Edit</a>
+            </div>
+            <div class="col-xs-7 text-right">
+              <a href="/tour/{{tour._id}}/edit/gallery/add" class="btn btn-line btn-line-black btn-magnific">Add Photos</a>
+              <button class="btn btn-line btn-edit">Save Changes</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              {{#each tour.gallery}}
+                <div class="tour-list">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <a href="{{photo}}" class="image-popup-gallery">
+                        <figure>
+                          <img src="{{photo}}" class="img-responsive" alt=""/>
+                        </figure>
+                      </a>
+                    </div>
+                    <div class="col-sm-10">
+                      <div class="row">
+                        <div class="col-xs-4">
+                          <label>Name</label>
+                          <input type="text" class="form-control" name="name_{{@index}}"
+                                 value="{{name}}">
+                        </div>
+                        <div class="col-xs-4">
+                          <label>Order Priority</label>
+                          <input type="number" class="form-control" name="priority_{{@index}}"
+                          value="{{priority}}">
+                        </div>
+                        <div class="col-xs-4">
+                          <label>Delete</label>
+                          <input type="checkbox" name="deletePhoto" value="{{@index}}" style="display: block;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{else}}
+                <div class="text-center">
+                  <h3>Currently No Photos Exist</h3>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Tour list widget ends -->
+  </div>
+</div>

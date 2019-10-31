@@ -1,0 +1,273 @@
+<div id="packages-selection" class="row">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group services-checkboxes
+          {{#unless newRequest}}{{#unless userIsAdmin}}disabled{{/unless}}{{/unless}}">
+          <label>HQ (HDR) Photography</label>
+          {{#if newRequest}}
+            <p style="margin-bottom: 10px;">Please choose what type of HQ (HDR) Photography you would like to select.
+              To view more details, <a href="/#PricingHQPhoto" target="_blank" style="color: #FAB702;">
+                click here</a>.
+              If you do not wish to include HQ (HDR) Photography, click 'N/A' . </p>
+          {{else}}
+            {{#if userAdminOrManager}}
+              <p style="margin-bottom: 10px;">Please click the corresponding checkboxes for HQ (HDR) Photography.</p>
+            {{else}}
+              <p style="margin-bottom: 10px;">If you would like to change HQ (HDR) Photography, please contact us.</p>
+            {{/if}}
+          {{/if}}
+          <div class="row">
+            <div class="col-sm-6">
+              <label><input type="radio" name="HQ_photo" value="small_photo"
+                {{checked tour.HQPhotography 'small_photo'}}>Small - $99.99
+                <ul><li>Up to 1000 sq ft</li></ul></label>
+            </div>
+            <div class="col-sm-6">
+              <label><input type="radio" name="HQ_photo" value="medium_photo"
+                {{checked tour.HQPhotography 'medium_photo'}}>Medium - $149.99
+                <ul><li>1000 - 3000 sq ft</li></ul></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label><input type="radio" name="HQ_photo" value="large_photo"
+                {{checked tour.HQPhotography 'large_photo'}}>Large - $199.99
+                <ul><li>3000+ sq ft</li></ul></label>
+            </div>
+            <div class="col-sm-6">
+              <label><input type="radio" name="HQ_photo" value=""
+                {{checked tour.HQPhotography ''}}>N/A</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group services-checkboxes
+          {{#unless newRequest}}{{#unless userIsAdmin}}disabled{{/unless}}{{/unless}}">
+          <label>Cinematic HD Videography</label>
+          {{#if newRequest}}
+            <p style="margin-bottom: 10px;">Please choose what type of Cinematic HD Videography you would like to select.
+              To view more details, <a href="/#PricingHDVideography" target="_blank" style="color: #FAB702;">
+                click here</a>.
+              If you do not wish to include Cinematic HD Videography, click 'N/A' . </p>
+          {{else}}
+            {{#if userAdminOrManager}}
+              <p style="margin-bottom: 10px;">Please click the corresponding checkboxes for Cinematic HD Videography.</p>
+            {{else}}
+              <p style="margin-bottom: 10px;">If you would like to change Cinematic HD Videography, please contact us.</p>
+            {{/if}}
+          {{/if}}
+          <div class="row">
+            <div class="col-sm-6">
+              <label><input type="radio" name="HD_video" value="small_video"
+                {{checked tour.cinematicHDVideography 'small_video'}}>Small - $149.99
+                <ul><li>Up to 1000 sq ft</li></ul></label>
+            </div>
+            <div class="col-sm-6">
+              <label><input type="radio" name="HD_video" value="medium_video"
+                {{checked tour.cinematicHDVideography 'medium_video'}}>Medium - $199.99
+                <ul><li>1000 - 3000 sq ft</li></ul></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label><input type="radio" name="HD_video" value="large_video"
+                {{checked tour.cinematicHDVideography 'large_video'}}>Large - $249.99
+                <ul><li>3000+ sq ft</li></ul></label>
+            </div>
+            <div class="col-sm-6">
+              <label><input type="radio" name="HD_video" value=""
+                {{checked tour.cinematicHDVideography ''}}>N/A</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group services-checkboxes
+          {{#unless newRequest}}{{#unless userIsAdmin}}disabled{{/unless}}{{/unless}}">
+          <label>3D Matterport Interactive Tour</label>
+          {{#if newRequest}}
+            <p style="margin-bottom: 10px;">Please choose what type of 3D Matterport Interactive Tour you would like to select.
+              To view more details, <a href="/#Pricing3DMatterport" target="_blank" style="color: #FAB702;">
+                click here</a>.
+              If you do not wish to include 3D Matterport Interactive Tour, click 'N/A' . </p>
+          {{else}}
+            {{#if userAdminOrManager}}
+              <p style="margin-bottom: 10px;">Please click the corresponding checkboxes for 3D Matterport Interactive Tour.</p>
+            {{else}}
+              <p style="margin-bottom: 10px;">If you would like to change 3D Matterport Interactive Tour, please contact us.</p>
+            {{/if}}
+          {{/if}}
+          <div class="row">
+            <div class="col-sm-6">
+              <label><input type="radio" name="matterport_tour" value="small_matterport"
+                {{checked tour.matterportTour 'small_matterport'}}>Small - $199.99
+                <ul><li>Up to 1000 sq ft</li></ul></label>
+            </div>
+            <div class="col-sm-6">
+              <label><input type="radio" name="matterport_tour" value="medium_matterport"
+                {{checked tour.matterportTour 'medium_matterport'}}>Medium - $299.99
+                <ul><li>1000 - 3000 sq ft</li></ul></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label><input type="radio" name="matterport_tour" value="large_matterport"
+                {{checked tour.matterportTour 'large_matterport'}}>Large - $399.99
+                <ul><li>3000+ sq ft</li></ul></label>
+            </div>
+            <div class="col-sm-6">
+              <label><input type="radio" name="matterport_tour" value=""
+                {{checked tour.matterportTour ''}}>N/A</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group services-checkboxes
+          {{#unless newRequest}}{{#unless userIsAdmin}}disabled{{/unless}}{{/unless}}">
+          <label>Aerial Photo/Video</label>
+          {{#if newRequest}}
+            <p style="margin-bottom: 10px;">Please choose what type of Aerial Photo/Video you would like to select.
+              To view more details, <a href="/#PricingAerialPhotoVideo" target="_blank" style="color: #FAB702;">
+                click here</a>.
+              If you do not wish to include Aerial Photo/Video, click 'N/A' . </p>
+          {{else}}
+            {{#if userAdminOrManager}}
+              <p style="margin-bottom: 10px;">Please click the corresponding checkboxes for Aerial Photo/Video.</p>
+            {{else}}
+              <p style="margin-bottom: 10px;">If you would like to change Aerial Photo/Video, please contact us.</p>
+            {{/if}}
+          {{/if}}
+          <div class="row">
+            <div class="col-sm-6">
+              <label><input type="radio" name="aerial_photo_video" value="small_aerial"
+                {{checked tour.aerialPhotoVideo 'small_aerial'}}>Aerial Photography - $149.99
+                <ul><li>Up to 10 images</li></ul></label>
+            </div>
+            <div class="col-sm-6">
+              <label><input type="radio" name="aerial_photo_video" value="medium_aerial"
+                {{checked tour.aerialPhotoVideo 'medium_aerial'}}>Aerial Videography - $199.99
+                <ul><li>Up to 90 seconds</li></ul></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label><input type="radio" name="aerial_photo_video" value=""
+                {{checked tour.aerialPhotoVideo ''}}>N/A</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group services-checkboxes
+          {{#unless newRequest}}{{#unless userIsAdmin}}disabled{{/unless}}{{/unless}}">
+          <label for="additional_services">Additional Services</label>
+          {{#if newRequest}}
+            <p style="margin-bottom: 10px;">
+              If you would like any additional services, please click the corresponding checkboxes.</p>
+          {{else}}
+            {{#if userAdminOrManager}}
+              <p style="margin-bottom: 10px;">Please click the corresponding checkboxes for additional services.</p>
+            {{else}}
+              <p style="margin-bottom: 10px;">If you would like to change video package, please contact us.</p>
+            {{/if}}
+          {{/if}}
+          <div class="row">
+            <div class="col-xs-12">
+              <label><input type="checkbox" class="associated-checkbox" name="additional_services" value="twilight_photo"
+                {{checked tour.additionalServices 'twilight_photo'}} data-inputbox="#twilight-photo-quantity">
+                Twilight Photography - $49.99 each</label>
+              <input type="number" id="twilight-photo-quantity" class="form-control smaller-input-box"
+                     name="twilight_photo_quantity" min="1" value="{{tour.twilightPhotoQuantity}}"
+                     placeholder="number of twilight photos">
+              <span class="small-caption">Please indicate how many photos you want.</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <label><input type="checkbox" name="additional_services" value="rush_service"
+                {{checked tour.additionalServices 'rush_service'}}>
+                Rush Service for Photos (same day delivery) - $59.99</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <label><input type="checkbox" name="additional_services" value="agent_video"
+                {{checked tour.additionalServices 'agent_video'}}>Agent Intro/Outro Video - $99.99</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <label><input type="checkbox" name="additional_services" value="social_media_video"
+                {{checked tour.additionalServices 'social_media_video'}}>Social Media Teaser video - $99.99</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{#unless newRequest}}
+      {{#if userIsAdmin}}
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Discount for Packages (in %)</label>
+              <input type="number" class="form-control" name="tour_discount" value="{{tour.discount}}"
+                     min="0" max="100" {{#unless userIsAdmin}}disabled{{/unless}}/>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    {{/unless}}
+    <div id="tour-pricing-display" class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Total Price</label>
+          <div class="row">
+            <div class="col-sm-12">
+              <span>Packages and Services Total</span>
+              <h5>$<span id="packages-total-price">0</span></h5>
+            </div>
+          </div>
+          <div id="tour-discount-row" class="row">
+            <div class="col-sm-12">
+              <span>Discount</span>
+              <h5>$<span id="packages-discount">0</span></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <span>HST</span>
+              <h5>$<span id="hst">0</span></h5>
+            </div>
+          </div>
+          <div class="row" style="border-top: 1px dashed rgba(0,0,0,.2);">
+            <div class="col-sm-12">
+              <span>Total</span>
+              <h5>$<span id="tour-total-price">0</span></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="request_note">Request Note</label>
+          <textarea class="form-control" rows="10" name="request_note" id="request_note"
+                    placeholder="Please type in any message you want to let us know.">{{tour.request_note}}</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

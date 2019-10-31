@@ -1,0 +1,17 @@
+<div class="container">
+  {{#if tourEdit}}
+  <div class="row">
+    <div class="col-xs-12 text-right">
+      <a href="/tour/{{tour._id}}/edit/virtual-tour/edit" class="btn btn-line btn-edit">edit</a>
+    </div>
+  </div>
+  {{/if}}
+  <div class="row">
+    <!-- Deleted to resolve conflict between animate.css and iframe fullscreen
+    <div class="col-md-8 col-md-offset-2" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+    -->
+    <div class="col-md-8 col-md-offset-2">
+      {{{tour.panoTour.code}}}
+    </div>
+  </div>
+</div>

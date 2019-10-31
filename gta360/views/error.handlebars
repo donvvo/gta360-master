@@ -1,0 +1,28 @@
+<section id="subheader" data-speed="8" data-type="background" class="padding-top-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>{{statusCode}}</h1>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="content" style="padding: 50px 0;">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+        <h1 style="margin-bottom: 20px;">{{title}}</h1>
+        <p>{{message}}</p>
+        {{#if backToDashboard}}
+          <a class="btn btn-line-black" href="/dashboard">
+            <i class="fa fa-arrow-circle-left"></i> Back To Dashboard
+          </a>
+        {{else}}
+          <a class="btn btn-line-black" href="javascript:history.back()">
+            <i class="fa fa-arrow-circle-left"></i> Back To Previous Page
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

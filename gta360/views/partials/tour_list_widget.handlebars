@@ -1,0 +1,94 @@
+<!-- Tour list starts -->
+<div class="row">
+  <div class="col-sm-12">
+    {{#each tours}}
+      <div class="tour-list">
+        <a href="{{url}}" target="_blank">
+          <div class="row">
+            <div class="col-sm-2">
+              <figure>
+                <img src="{{#if slider.image}}{{slider.image}}{{else}}/images/placeholder/placeholder_350x350.png{{/if}}" class="img-responsive" alt=""/>
+              </figure>
+            </div>
+            <div class="col-sm-10">
+              <div class="row">
+                <div class="col-xs-7">
+                  <h3 style="display: inline-block;">{{#if property.name}}{{property.name}}{{else}}Please add property name{{/if}}</h3>
+                  <span style="padding-left: 10px; color: {{statusColorCode}};">{{status_display}}</span>
+                </div>
+                <div class="col-xs-5 text-right">
+                  {{#if isTourAdminAssignedManagerOrSelf}}
+                    <a href="/tour/{{_id}}/edit" class="btn btn-line" style="margin: 5px 0;">edit</a>
+                  {{/if}}
+                  {{#if ../userIsAdmin}}
+                    <a href="/tour/{{_id}}/delete" class="btn btn-line btn-delete" style="margin: 5px 0;">delete</a>
+                  {{/if}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <p style="margin-bottom: 10px;">{{#if property.address}}
+                    {{property.full_address}}
+                  {{else}}Please add property address{{/if}}</p>
+                </div>
+             </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <p style="margin-bottom: 0"><strong>UID:</strong>
+                    {{uid}}</p>
+                </div>
+                <div class="col-sm-6">
+                  <p style="margin-bottom: 0"><strong>Requested By:</strong>
+                    {{#if creator.name.full}}{{creator.name.full}}
+                    {{else}}N/A{{/if}}</p>
+                </div>
+              </div>
+              {{#if ../userAdminOrManager}}
+                <div class="row">
+                  <div class="col-sm-6">
+                    <p style="margin-bottom: 0"><strong>Brokerage:</strong>
+                      {{#if creator.brokerage}}{{creator.brokerage}}
+                      {{else}}N/A{{/if}}</p>
+                  </div>
+                  <div class="col-sm-6">
+                    <p style="margin-bottom: 0"><strong>Telephone:</strong>
+                      {{#if creator.contact.phone}}{{creator.contact.phone}}
+                      {{else}}N/A{{/if}}</p>
+                  </div>
+                </div>
+              {{/if}}
+              <div class="row">
+                <div class="col-sm-6">
+                  <p style="margin-bottom: 0"><strong>Request Date:</strong>
+                    {{#if request_date}}{{pretty_request_date}}
+                    {{else}}N/A{{/if}}</p>
+                </div>
+                <div class="col-sm-6">
+                  {{#if ../userIsAdmin}}
+                    <p style="margin-bottom: 0"><strong>Assigned Photographer:</strong>
+                      {{#if manager}}{{managerName}}
+                      {{else}}N/A{{/if}}</p>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    {{else}}
+      <div class="text-center">
+        <h3>Currently No Tours Exist</h3>
+      </div>
+    {{/each}}
+  </div>
+</div>
+{{#if userAdminOrClient}}
+<div class="row" style="margin-top: 10px;">
+  <div class="col-sm-12">
+    <div class="text-center">
+      <a href="/tour/new/{{user._id}}" class="btn btn-line btn-margin">Request a Tour</a>
+    </div>
+  </div>
+</div>
+{{/if}}
+<!-- Tour list ends -->

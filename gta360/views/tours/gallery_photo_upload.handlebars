@@ -1,0 +1,40 @@
+<link  href="/cropper/dist/cropper.min.css" rel="stylesheet">
+<style>
+#gallery-upload-form .btn.btn-primary.btn-file {
+  color: #333;
+  border: solid 1px #FAB702 !important;
+}
+img.kv-preview-data.file-preview-image.file-zoom-detail {
+  width: auto !important;
+}
+</style>
+
+<!-- Content -->
+<div class="container project-view">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <form id="gallery-upload-form" class="theme_form" action="{{url}}" method="post" enctype="multipart/form-data"
+            accept-charset="utf-8">
+        {{#if virtualTourAdd}}
+          <h2>Upload Panoramic Photos</h2>
+          <p>Click 'Browser' button to start uploading panoramic photos. Photos must be in .jpg or .png format,
+            and each photo should be less than 10MB. Maximum number of photos that can be uploaded at
+            once is 10. To remove currently loaded photos, click 'Remove' button.</p>
+        {{else}}
+          <h2>Upload Gallery Photos</h2>
+          <p>Click 'Browser' button to start uploading gallery photos. Photos must be in .jpg or .png format,
+            and each photo should be less than 5MB. Maximum number of photos that can be uploaded at
+            once is 50. To remove currently loaded photos, click 'Remove' button.</p>
+        {{/if}}
+        <div class="form-group">
+          <label class="control-label">{{#if virtualTourAdd}}Panoramic Photos{{else}}Gallery Photos{{/if}}</label>
+          <input id="{{#if virtualTourAdd}}panoramic-photo-input{{else}}gallery-photo-input{{/if}}"
+                 name="galleryPhotos" type="file" accept=".jpg,.png" class="file-loading"
+                 multiple data-allowed-file-extensions='["jpg", "png"]'>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="/bootstrap-fileinput/js/fileinput.min.js" type="text/javascript"></script>
+<script src="/js/fileUploader.js" type="text/javascript"></script>

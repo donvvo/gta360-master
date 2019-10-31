@@ -1,0 +1,47 @@
+<div id="content">
+  <section id="section-portfolio" class="gallery no-bottom">
+    <div class="container">
+      <!-- Section Heading -->
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+          <h1>Panoramic Photos</h1>
+          <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+          <div class="spacer-single"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <a href="{{url}}/panoramic-images/add" class="btn btn-line btn-edit btn-magnific">Add Photo</a>
+        </div>
+      </div>
+      <div class="spacer-single"></div>
+    </div>
+
+    <div id="gallery" class="gallery full-gallery de-gallery pf_full_width wow fadeInUp" data-wow-delay=".3s">
+      {{#each tour.panoramicImages}}
+      <!-- gallery item -->
+      <div class="item">
+        <div class="picframe">
+          <a class="btn-magnific" href="{{../url}}/panoramic-images/{{@index}}">
+            <span class="overlay">
+              <span class="pf_text">
+                <span class="project-name">Click to Edit</span>
+              </span>
+            </span>
+          </a>
+          <img src="{{.}}" alt="" />
+        </div>
+      </div>
+      <!-- close gallery item -->
+      {{/each}}
+    </div>
+
+    <div id="loader-area">
+      <div class="project-load"></div>
+    </div>
+  </section>
+</div>
+
+{{#section 'javascript'}}
+<script src="/cropper/dist/cropper.min.js"></script>
+{{/section}}

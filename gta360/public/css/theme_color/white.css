@@ -1,0 +1,30 @@
+header, header.smaller, .subfooter {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.subfooter {
+    border-top: 1px solid #eee;
+}
+
+#mainmenu a, footer {
+    color: #333;
+}
+
+@media only screen and (max-width: 992px) {
+    #mainmenu li a {
+        color: #333;
+    }
+}
+
+#menu-btn {
+    background: none;
+}
+
+#menu-btn:before {
+    color: #606060;
+}
+
+address span {
+    border-bottom-color: #ddd;
+}

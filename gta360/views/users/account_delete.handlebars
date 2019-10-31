@@ -1,0 +1,45 @@
+<div id="content">
+  <div class="container inner-padding">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+        <h1>Delete Account</h1>
+        <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+        <div class="spacer-single"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+        <form class="theme_form" method="POST" accept-charset="utf-8">
+          <input type="hidden" name="_csrf" value="{{csrf}}" id="">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <div class="alert alert-danger">
+                <strong>Do you really want to delete this account? This action is irreversible.</strong>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <h4>Name</h4>
+              <p>{{profile_user.name.full}}</p>
+            </div>
+            <div class="col-sm-6">
+              <h4>Email</h4>
+              <p>{{profile_user.email}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 text-right">
+              <div class="form-group">
+                <a href="/user/{{profile_user._id}}" class="btn btn-line">Back</a>
+                <input type="submit" class="btn btn-line btn-edit" value="Delete">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

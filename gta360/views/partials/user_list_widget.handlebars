@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    {{#each user_list}}
+      <div class="user-list" data-userid="{{id}}" data-username="{{name.first_name}} {{name.last_name}}">
+        <a href="/user/{{id}}">
+          <div class="row">
+            <div class="col-sm-2">
+              <figure>
+                <img src="{{#if picture}}{{picture}}{{else}}/images/placeholder/placeholder_350x350.png{{/if}}"
+                     class="img-responsive" alt=""/>
+              </figure>
+            </div>
+            <div class="col-sm-7">
+              <h3>{{name.first_name}} {{name.last_name}}</h3>
+              <p>Email: {{#if contact.email}}{{contact.email}}{{else}}{{email}}{{/if}}<br />
+                Phone: {{#if contact.phone}}{{contact.phone}}{{else}}N/A{{/if}}</p>
+            </div>
+            <div class="col-sm-3">
+              <h3>User Type</h3>
+              <p>{{user_type_display}}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    {{else}}
+      <div class="text-center">
+        <h3>You do not have any users.</h3>
+      </div>
+    {{/each}}
+  </div>
+</div>
+

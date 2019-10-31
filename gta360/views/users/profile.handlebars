@@ -1,0 +1,119 @@
+<div id="content">
+  <div class="container inner-padding">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+        <h1>Profile</h1>
+        <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+        <div class="spacer-single"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-xs-12">
+        <form class="theme_form" method="POST" accept-charset="utf-8">
+          <input type="hidden" name="_csrf" value="{{csrf}}" id="">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="row">
+                <div class="col-sm-12 text-center">
+                  <figure>
+                    <img src="{{#if profile_user.picture}}{{profile_user.picture}}
+                    {{else}}/images/placeholder/profile_placeholder.png{{/if}}" class="img-responsive" alt=""/>
+                  </figure>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 10px;">
+                <div class="col-sm-12">
+                  <h4>{{profile_user.name.full}}</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <p style="margin-bottom: 6px;"><i class="fa fa-envelope fa-lg" aria-hidden="true"
+                                               style="color: #FAB702; font-size: 15px; margin: 0 8px 0 0;"></i>
+                    {{#if profile_user.email}}
+                    <a href="mailto:{{profile_user.email}}">{{profile_user.email}}</a>
+                  {{else}}<a href="mailto:{{profile_user.email}}">{{profile_user.email}}</a>
+                  {{/if}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <p style="margin-bottom: 6px;"><i class="fa fa-phone fa-lg" aria-hidden="true" style="color: #FAB702; margin: 0 8px 0 0;"></i>
+                    {{#if profile_user.contact.phone}}
+                      <a href="tel:{{profile_user.contact.phone}}">{{profile_user.contact.phone}}</a>
+                    {{else}}N/A{{/if}}</p>
+                </div>
+              </div>
+              {{#if profile_user.address}}
+              <div class="row">
+                <div class="col-sm-12">
+                  <p style="margin-bottom: 6px;"><i class="fa fa-map-marker fa-lg" aria-hidden="true" style="color: #FAB702; margin: 0 8px 0 0;"></i>
+                    {{profile_user.address}}
+                  </p>
+                </div>
+              </div>
+              {{/if}}
+              {{#if profile_user.website}}
+              <div class="row">
+                <div class="col-sm-12">
+                  <p style="margin-bottom: 6px;"><i class="fa fa-desktop fa-lg" aria-hidden="true" style="color: #FAB702; margin: 0 8px 0 0;"></i>
+                      <a href="{{profile_user.website}}" target="_blank">{{profile_user.website}}</a>
+                  </p>
+                </div>
+              </div>
+              {{/if}}
+            </div>
+            {{#if permission}}
+            <div class="col-sm-6">
+            {{else}}
+            <div class="col-sm-9">
+            {{/if}}
+              <div class="row">
+                <div class="col-sm-12">
+                  <h3 style="margin-top: 0;">Description</h3>
+                  <p>{{#if profile_user.description}}{{profile_user.description}}{{else}}No description.{{/if}}</p>
+                </div> 
+              </div>
+              {{#if userAdminOrManager}}
+              <div class="row">
+                <div class="col-sm-12">
+                  <h3>User Type</h3>
+                  <p>{{profile_user.user_type_display}}</p>
+                </div>
+              </div>
+              {{/if}}
+            </div>
+            {{#if permission}}
+              <div class="col-sm-3 text-right profile-edit-btns">
+                <a href="/user/{{profile_user._id}}/edit" class="btn btn-line" >edit profile</a>
+                {{#if userIsAdmin}}
+                <a href="/user/{{profile_user._id}}/delete" class="btn btn-line btn-delete">delete account</a>
+                {{/if}}
+              </div>
+            {{/if}}
+          </div>
+        </form>
+      </div>   
+    </div>
+
+    {{#if tourPermission}}
+      <div class="row" style="margin-top: 40px;">
+        <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+          <h1>Tours</h1>
+          <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+          <div class="spacer-single"></div>
+        </div>
+      </div>
+
+      <!-- Tour list widget starts-->
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+          {{> tour_list_widget}}
+        </div>
+      </div>
+      <!-- Tour list widget ends -->
+    {{/if}}
+  </div>
+</div>
+

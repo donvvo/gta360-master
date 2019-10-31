@@ -1,0 +1,55 @@
+<div id="content">
+  <div class="container inner-padding">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+        <h1>Assign a Photographer</h1>
+        <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+        <div class="spacer-single"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p>Click on a photographer to assign to the tour.</p>
+      </div>
+    </div>
+
+    {{> user_list_widget}}
+
+    <div class="modal fade" id="managerAssignmentModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form method="post">
+            <input id="manager-id" type="hidden" name="managerId" value="">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title" id="myModalLabel">Confirm Photographer</h3>
+            </div>
+            <div class="modal-body">
+              <p>Do you want to assign <span id="manager-name"></span> to this tour?</p>
+              <p id='submit' class="text-right">
+                <input type='submit' value='Assign' class="btn btn-line">
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{#section 'javascript'}}
+  <script type="text/javascript" charset="utf-8">
+    $('.user-list').click(function(event) {
+      event.preventDefault()
+
+      var managerName = $(this).attr('data-username')
+      var managerId = $(this).attr('data-userid')
+
+      $('#manager-name').text(managerName)
+      $('#manager-id').val(managerId)
+
+      $('#managerAssignmentModal').modal()
+    })
+  </script>
+{{/section}}
+

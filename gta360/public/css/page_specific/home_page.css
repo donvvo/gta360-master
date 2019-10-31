@@ -1,0 +1,90 @@
+/* For styling home page specific components */
+
+/* Price list */
+section#PriceList {
+    background: #333;
+}
+
+/* Price list grid layout */
+section#PriceList .container {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+@media (max-width: 767px) {
+    section#PriceList .container {
+        padding: 90px 0;
+    }
+
+    section#PriceList .col-xs-12.content {
+        padding: 0 30px;
+    }
+}
+
+section#PriceList .price-list-row {
+    margin-bottom: 30px;
+}
+
+section#PriceList .gallery .item {
+    width: 100%;
+}
+
+section#PriceList #PlayButton {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+section#PriceList h2.theme-title {
+    color: #fab702;
+}
+
+section#PriceList ul.price-list li {
+    list-style: none;
+    margin: 0 0 10px;
+}
+
+section#PriceList ul.price-list li:before {
+    display: none;
+}
+
+section#PriceList ul li i {
+    margin-right: 5px;
+}
+
+section#PriceList ul li i.fa.fa-check {
+    color: #FAB702;
+}
+
+section#PriceList span.price-list-overlay {
+    background: #111;
+    text-align: center;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+section#PriceList .price-list-overlay .pf_text {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Popup */
+#homepage.de_light .mfp-bg {
+    background: #0b0b0b;
+    opacity: 0.9
+}
+
+#homepage.de_light .mfp-close {
+    color: #fff !important;
+}
+
+/* Elements */
+#homepage iframe {
+    border: none;
+}

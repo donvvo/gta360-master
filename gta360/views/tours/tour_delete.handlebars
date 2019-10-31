@@ -1,0 +1,54 @@
+<div id="content">
+  <div class="container inner-padding">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+        <h1>Delete Tour</h1>
+        <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+        <div class="spacer-single"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+        <form class="theme_form" method="POST" accept-charset="utf-8">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <div class="alert alert-danger">
+                <strong>Do you really want to delete this tour? This action is irreversible.</strong>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <label>Property</label>
+              <p>{{tour.property.name}}</p>
+            </div>
+            <div class="col-sm-8">
+              <label>Address</label>
+              <p>{{tour.property.full_address}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <label>Requestor</label>
+              <p>{{tour.creatorName}}</p>
+            </div>
+            <div class="col-sm-4">
+              <label>Status</label>
+              <p>{{tour.status_display}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 text-right">
+              <div class="form-group">
+                <a href="/tour/list" class="btn btn-line">Back to List</a>
+                <input type="submit" class="btn btn-line btn-edit" value="Delete">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

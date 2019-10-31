@@ -1,0 +1,36 @@
+<!-- Content -->
+<div class="container project-view">
+  <div class="row">
+    <div class="col-md-9">
+      <!-- <h3 class="page-header">Demo:</h3> -->
+      <div class="img-container">
+        <img id="image" src="{{#if tour.neighborhood.photo}}{{tour.neighborhood.photo}}{{else}}/images/placeholder/placeholder_350x350.png{{/if}}" alt="Picture">
+      </div>
+    </div>
+    <div class="col-md-3 docs-buttons">
+      <form id="crop-form" class="theme_form" action="{{url}}" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+        <h2>Edit Neighborhood Picture</h2>
+        <p>Drag the blue box to crop the image.</p>
+        <!-- <h3 class="page-header">Toolbar:</h3> -->
+        <div class="btn-group">
+
+          <label class="btn btn-line" for="inputImage" title="Upload image file">
+            <input type="file" class="sr-only" id="inputImage" name="crop_image" accept="image/*">
+            <span class="docs-tooltip" data-toggle="tooltip" title="Upload image">
+              <span class="fa fa-upload"></span>
+            </span>
+          </label>
+          <input type="hidden" name="width" id="width" value="" />
+          <input type="hidden" name="height" id="height" value="" />
+          <input type="hidden" name="x_coord" id="x_coord" value="" />
+          <input type="hidden" name="y_coord" id="y_coord" value="" />
+
+          <a id="submit" class="btn btn-line">submit</a> 
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/js/cropper.js" type="text/javascript" charset="utf-8"></script>

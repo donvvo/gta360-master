@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="property_name">Property Name</label>
+          <input type="text" class="form-control" name="property_name"
+                 value="{{tour.property.name}}" required>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="street_address">Street Address</label>
+          <input type="text" class="form-control" name="street_address"
+                 value="{{tour.property.address.street_address}}" required>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="city">City</label>
+          <select name="city" class="form-control" required>
+            <option value="Ajax" {{selected tour.property.address.city 'Ajax'}}>Ajax</option>
+            <option value="Aurora" {{selected tour.property.address.city 'Aurora'}}>Aurora</option>
+            <option value="Bradford West Gwillimbury" {{selected tour.property.address.city 'Bradford West Gwillimbury'}}>Bradford West Gwillimbury</option>
+            <option value="Brampton" {{selected tour.property.address.city 'Brampton'}}>Brampton</option>
+            <option value="Burlington" {{selected tour.property.address.city 'Burlington'}}>Burlington</option>
+	    <option value="Courtice" {{selected tour.property.address.city 'Courtice'}}>Courtice</option>
+            <option value="Keswik" {{selected tour.property.address.city 'Keswik'}}>Keswik</option>
+            <option value="Markham" {{selected tour.property.address.city 'Markham'}}>Markham</option>
+            <option value="Milton" {{selected tour.property.address.city 'Milton'}}>Milton</option>
+            <option value="Missisauga" {{selected tour.property.address.city 'Missisauga'}}>Missisauga</option>
+            <option value="Newmarket" {{selected tour.property.address.city 'Newmarket'}}>Newmarket</option>
+            <option value="Oakville" {{selected tour.property.address.city 'Oakville'}}>Oakville</option>
+            <option value="Orangeville" {{selected tour.property.address.city 'Orangeville'}}>Orangeville</option>
+            <option value="Oshawa" {{selected tour.property.address.city 'Oshawa'}}>Oshawa</option>
+            <option value="Pickering" {{selected tour.property.address.city 'Pickering'}}>Pickering</option>
+            <option value="Richmond Hill" {{selected tour.property.address.city 'Richmond Hill'}}>Richmond Hill</option>
+            <option value="Stouffville" {{selected tour.property.address.city 'Stouffville'}}>Stouffville</option>
+            <option value="Toronto" {{selected tour.property.address.city 'Toronto'}}>Toronto</option>
+            <option value="Vaughan" {{selected tour.property.address.city 'Vaughan'}}>Vaughan</option>
+            <option value="Whitby" {{selected tour.property.address.city 'Whitby'}}>Whitby</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="province">Province</label>
+          <input type="text" class="form-control" name="province" value="ON" readonly required>
+          <span class="small-caption">(currently we only offer services in ON)</span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="postal_code">Postal Code</label>
+          <input type="text" class="form-control postal-code" name="postal_code"
+                 value="{{tour.property.address.postal_code}}" required>
+          <span class="small-caption">(in A1A 1A1 format)</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="tour_schedule">Tour Schedule (Leave empty if you are flexible)</label>
+          <input type="text" class="form-control datetime-picker" name="tour_schedule"
+                 value="{{tour.pretty_schedule}}" id="tour_schedule"
+                 {{#unless tourScheduleEdit}}disabled{{/unless}}>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Offer Price</label>
+          <input type="text" class="form-control offer-price" name="offer_price" maxlength="15"
+                 value="{{tour.offer_price}}">
+          <span class="small-caption">(in $1,000,000 format)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<!-- revolution slider begin -->
+<section id="section-slider" class="fullwidthbanner-container no-top">
+  {{#if tourEdit}}
+    <a href="/tour/{{tour._id}}/slider-edit" class="btn btn-line btn-edit slider-edit-btn btn-magnific">edit</a>
+  {{/if}}
+  <div class="revolution-slider">
+    <ul>
+      <li data-transition="fade" data-slotamount="10" data-masterspeed="200" data-thumb="">
+        <!--  BACKGROUND IMAGE -->
+        <img src="{{#if tour.slider.image}}{{tour.slider.image}}{{else}}/images/placeholder/no_image_placeholder.png{{/if}}" alt="" />
+
+        <div class="tp-caption customin customout start tour-box"
+             data-x="0"
+             data-y="40"
+             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:2;scaleY:2;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.85;scaleY:0.85;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+             data-speed="800"
+             data-start="400"
+             data-easing="easeInOutExpo"
+             data-endspeed="400"
+             style="background: #FAB702; color: #333; {{#if mls}}height: auto !important;{{/if}}">
+          <div class="tour-box-wrapper">
+            <i class="fa fa-map-marker fa-lg" aria-hidden="true" style="float:left;"></i>
+            <div style="float: right; text-align:right; line-height: 1.2em; margin-bottom: 10px; white-space: initial; max-width: 220px;">
+              {{tour.property.address.street_address}},<br/>
+              {{tour.property.address.city}},
+              {{tour.property.address.province}} {{tour.property.address.postal_code}}</div>
+            <div class="clearfix"></div>
+            {{#if tour.offer_price}}
+              <i class="fa fa-usd fa-lg" aria-hidden="true" style="float: left;"></i>
+              <div style="float: right;">Offered at <b>{{tour.offer_price}}</b></div>
+              <div class="clearfix"></div>
+            {{/if}}
+            {{#unless mls}}
+            <div style="text-align: center;">
+              <button class="btn btn-line btn-line-black" data-toggle="modal" data-target="#contactModal">
+                Request a Showing</button>
+            </div>
+            {{/unless}}
+          </div>
+        </div>
+
+        {{#if slider_video_checked}}
+          <div class="tp-caption customin customout start"
+               data-x="center"
+               data-y="center"
+               data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:2;scaleY:2;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+               data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.85;scaleY:0.85;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+               data-speed="800"
+               data-start="400"
+               data-easing="easeInOutExpo"
+               data-endspeed="400">
+            <a href="/tour/{{tour._id}}/vimeo" class="simple-ajax-popup-align-top">
+              <img src="/images/icons/play-circle-icon.png" class="play-circle-icon">
+            </a>
+          </div>
+        {{/if}}
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- revolution slider close -->

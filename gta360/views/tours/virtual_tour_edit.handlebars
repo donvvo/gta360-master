@@ -1,0 +1,57 @@
+<div id="content">
+  <div class="container inner-padding">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+        <h1>Edit 3D Tour</h1>
+        <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+      </div>
+    </div>
+
+    <!-- Tour list widget starts-->
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <form class="theme_form" method="POST" accept-charset="utf-8">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="form-group">
+                <label for="panoTourCode">Virtual Tour Code</label>
+                <textarea class="form-control" name="panoTourCode" rows="5">{{tour.panoTour.code}}</textarea>
+              </div>
+            </div>
+            <div class="col-sm-4" style="padding-top: 30px;">
+              <p style="margin-bottom: 0;">Copy and paste Matterport iframe code into the text box on the right.<br/>
+                Please make sure to set width="100%" and appropriate height.</p>
+            </div>
+          </div>
+          <!--
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="form-group">
+                <label for="">Thumbnail Photo</label>
+                <figure>
+                  <img src="{{#if tour.panoTour.thumbnail}}{{tour.panoTour.thumbnail}}
+                  {{else}}/images/placeholder/no_image_placeholder.png{{/if}}" class="img-responsive" alt=""/>
+                </figure>
+              </div>
+            </div>
+            <div class="col-sm-4" style="padding-top: 30px;">
+              <p style="margin-bottom: 0;">Please save all the other changes first before changing the photo.</p>
+              <a href="/tour/{{tour._id}}/edit/virtual-tour/edit/thumbnail"
+                 class="btn btn-line btn-margin btn-magnific">Change Photo</a>
+            </div>
+          </div>
+          -->
+          <div class="row" style="padding: 20px 0 40px;">
+            <div class="col-xs-5 text-left">
+              <a href="{{backUrl}}" class="btn btn-line btn-line-black no-scrollto">Back to Tour Edit</a>
+            </div>
+            <div class="col-xs-7 text-right">
+              <button class="btn btn-line btn-edit">Save Changes</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Tour list widget ends -->
+  </div>
+</div>

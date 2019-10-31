@@ -1,0 +1,766 @@
+<div id="content" class="no-bottom no-top">
+  <!-- revolution slider begin -->
+  {{> main_slider_widget}}
+  <!-- revolution slider close -->
+
+  <!-- Property highlights begin -->
+  <section id="tour-highlights" class="side-bg" style="padding: 60px 0;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+          <h1 class="tour-title">HIGHLIGHTS</h1>
+          <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+          <div class="spacer-single md-only"></div>
+        </div>
+      </div>
+      <div class="row {{#if highlights6Col}}highlights-6-col{{/if}}">
+        {{#if tour.highlights.square_feet.display}}
+        <div class="col-sm-3 col-xs-6 wow fadeIn">
+          <div class="de_count">
+            <img src="/images/icons/icon-square-feet.png" class="highlight-icons" />
+            <h3>{{tour.highlights.square_feet.detail}}</h3>
+            <span>Square Feet</span>
+          </div>
+        </div>
+        {{/if}}
+        {{#if tour.highlights.bath.display}}
+        <div class="col-sm-3 col-xs-6 wow fadeIn">
+          <div class="de_count">
+            <img src="/images/icons/icon-bath.png" class="highlight-icons" />
+            <h3>{{tour.highlights.bath.detail}}</h3>
+            <span>Bath</span>
+          </div>
+        </div>
+        {{/if}}
+        {{#if tour.highlights.bedroom.display}}
+        <div class="col-sm-3 col-xs-6 wow fadeIn">
+          <div class="de_count">
+            <img src="/images/icons/icon-bedroom.png" class="highlight-icons" />
+            <h3>{{tour.highlights.bedroom.detail}}</h3>
+            <span>Bedroom</span>
+          </div>
+        </div>
+        {{/if}}
+        {{#if tour.highlights.floors.display}}
+        <div class="col-sm-3 col-xs-6 wow fadeIn">
+          <div class="de_count">
+            <img src="/images/icons/icon-floors.png" class="highlight-icons" />
+            <h3>{{tour.highlights.floors.detail}}</h3>
+            <span>Floors</span>
+          </div>
+        </div>
+        {{/if}}
+        {{#if tour.highlights.inlaw_suite.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-inlaw-suite.png" class="highlight-icons" />
+              <h3>{{tour.highlights.inlaw_suite.detail}}</h3>
+              <span>Inlaw Suite</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.car_parking.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-car-parking.png" class="highlight-icons" />
+              <h3>{{tour.highlights.car_parking.detail}}</h3>
+              <span>Car Parking</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.locker.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-locker.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.locker.detail}}</h3>
+              <span>Locker</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.parking.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-parking.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.parking.detail}}</h3>
+              <span>Parking</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.kitchens.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-kitchens.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.kitchens.detail}}</h3>
+              <span>Kitchens</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.pool.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-pool.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.pool.detail}}</h3>
+              <span>Pool</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.basement_apt.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-basement-apt.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.basement_apt.detail}}</h3>
+              <span>Basement Apartment</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.lot_size.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-lot-size.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.lot_size.detail}}</h3>
+              <span>Lot Size</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.irregular_lot.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-irregular-lot.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.irregular_lot.detail}}</h3>
+              <span>Irregular Lot</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.ttc.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-ttc.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.ttc.detail}}</h3>
+              <span>TTC</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.highway.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-highway.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.highway.detail}}</h3>
+              <span>Highway</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.parks.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-parks.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.parks.detail}}</h3>
+              <span>Parks</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.schools.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-schools.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.schools.detail}}</h3>
+              <span>Schools</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.year_build.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-year-build.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.year_build.detail}}</h3>
+              <span>Year Build</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.new_build.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-new-build.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.new_build.detail}}</h3>
+              <span>New Build</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.custom_build.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-custom-build.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.custom_build.detail}}</h3>
+              <span>Custom Build</span>
+            </div>
+          </div>
+        {{/if}}
+        {{#if tour.highlights.ravine_lot.display}}
+          <div class="col-sm-3 col-xs-6 wow fadeIn">
+            <div class="de_count">
+              <img src="/images/icons/icon-ravine-lot.png" class="highlight-icons"/>
+              <h3>{{tour.highlights.ravine_lot.detail}}</h3>
+              <span>Ravine Lot</span>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </section>
+  <!-- Property profile end -->
+
+
+  <section id="tour-open-house" class="call-to-action bg-color text-center de_light" style="padding: 60px 0;">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2  col-xs-10 col-xs-offset-1 text-center">
+        {{#if tour.display.open_house}}
+          <h2 class="tour-title" style="margin: 0 0 30px 0;color:#111;">Open house on</h2>
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="open-house-date">
+                {{#if tour.open_house_date1}}
+                  <div>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> {{tour.pretty_open_house_date1}}
+                  </div>
+                {{/if}}
+                {{#if tour.open_house_date2}}
+                  <div>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> {{tour.pretty_open_house_date2}}
+                  </div>
+                {{/if}}
+                {{#if tour.open_house_date3}}
+                  <div>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> {{tour.pretty_open_house_date3}}
+                  </div>
+                {{/if}}
+                {{#if tour.open_house_date4}}
+                  <div>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> {{tour.pretty_open_house_date4}}
+                  </div>
+                {{/if}}
+              </h3>
+            </div>
+          </div>
+        {{else}}
+          <h2 class="tour-title" style="margin: 0 0 30px 0;color:#111;">{{tour.open_house_alternate_text}}</h2>
+        {{/if}}
+        {{#unless mls}}
+        <div class="row">
+          <div class="col-md-12" style="margin-top:40px;">
+            <button class="btn btn-line btn-line-yellow" data-toggle="modal" data-target="#contactModal">
+
+              REQUEST A SHOWING</button>
+          </div>
+        </div>
+        {{/unless}}
+        </div>
+      </div>
+  </section>
+
+
+
+
+
+
+  
+  
+
+  <!-- Gallery begin -->
+  <section id="section-portfolio" class="no-bottom" style="margin-top: 0;
+padding-top: 60px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+          <h1>Gallery</h1>
+          <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+          <div class="spacer-single"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="gallery" class="gallery full-gallery de-gallery pf_full_width gallery-tour">
+      {{#each tour.gallery}}
+      <!-- gallery item -->
+      <div class="item" data-index="{{@index}}">
+        <div class="picframe">
+          <a class="image-popup-gallery" href="{{photo}}">
+            <span class="overlay">
+              <span class="pf_text">
+                <span class="project-name">{{name}}</span>
+              </span>
+            </span>
+          </a>
+          <img src="{{photo}}" alt="" />
+        </div>
+      </div>
+      <!-- close gallery item -->
+      {{/each}}
+    </div>
+
+    <div class="text-center">
+      <button id="LoadMoreButton" class="btn btn-line btn-edit">
+        Load More</button>
+    </div>
+  </section>
+  <!-- Gallery close -->
+
+  <!-- Sub slider begin -->
+  {{#if tour.display.panoramicImages}}
+    <section id="virtual-tour" class="side-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+            <h1>Virtual Tour</h1>
+            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+            <div class="spacer-single"></div>
+          </div>
+        </div>
+      </div>
+      {{> virtual_tour_widget tourEdit=false}}
+    </section>
+  {{/if}}
+  <!-- Sub slider close -->
+
+  <section id="offer" class="call-to-action bg-color text-center" data-speed="5">
+    {{#if tour.display.offer_presentation}}
+      <h2 class="tour-title" style="margin: 0;">Offers Presented by {{tour.pretty_offer_date}}</h2>
+    {{else}}
+      <h2 class="tour-title" style="margin: 0;">{{tour.offer_date_alternate_text}}</h2>
+    {{/if}}
+  </section>
+
+ 
+  {{#if tour.display.property_details}}
+  <section id="section-about" class="side-bg no-bottom no-top">
+    <div class="image-container col-md-5 pull-right" data-delay="0" style="background: url('{{tour.property.image}}'); background-position: right;"></div>
+    <div class="container smaller-inner-padding">
+     
+      <div class="row">
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-md-12 wow fadeInUp">
+              <h1 class="tour-title">PROPERTY DETAILS</h1>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer-single md-only"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row property-image-md-only">
+                <div class="col-md-12 text-center">
+                  <figure>
+                    <img src="{{tour.property.image}}" class="img-responsive" alt=""
+                    style="max-width: 500px; width: 100%; margin-bottom: 30px;" />
+                  </figure>
+                </div>
+              </div>
+              {{#if tour.features.description}}
+                <div class="row">
+                  <div class="col-sm-12">
+                  <h5 class="tour-title" style="color: #FAB702;">What To Know</h5>
+                    <p>{{tour.features.description}}</p>
+                  </div>
+                </div>
+              {{/if}}
+              <div class="row">
+                <div class="col-sm-12">
+                <h5 class="tour-title" style="color: #FAB702;">Key Highlights</h5>
+                  <ul class="highlight-col-3">
+                    <p>
+                    {{#if tour.features.highlight1}}<li>{{tour.features.highlight1}}</li>{{/if}}
+                    {{#if tour.features.highlight2}}<li>{{tour.features.highlight2}}</li>{{/if}}
+                    {{#if tour.features.highlight3}}<li>{{tour.features.highlight3}}</li>{{/if}}
+                    {{#if tour.features.highlight4}}<li>{{tour.features.highlight4}}</li>{{/if}}
+                    {{#if tour.features.highlight5}}<li>{{tour.features.highlight5}}</li>{{/if}}
+                    {{#if tour.features.highlight6}}<li>{{tour.features.highlight6}}</li>{{/if}}
+                    {{#if tour.features.highlight7}}<li>{{tour.features.highlight7}}</li>{{/if}}
+                    {{#if tour.features.highlight8}}<li>{{tour.features.highlight8}}</li>{{/if}}
+                    {{#if tour.features.highlight9}}<li>{{tour.features.highlight9}}</li>{{/if}}
+                    {{#if tour.features.highlight10}}<li>{{tour.features.highlight10}}</li>{{/if}}
+                    {{#if tour.features.highlight11}}<li>{{tour.features.highlight11}}</li>{{/if}}
+                    {{#if tour.features.highlight12}}<li>{{tour.features.highlight12}}</li>{{/if}}
+                    </p>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{/if}}
+
+  {{#unless mls}}
+    <section id="tour-open-house" class="call-to-action bg-color text-center de_light" style="padding: 60px 0 40px 0;">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2  col-xs-10 col-xs-offset-1 text-center">
+          <h2 class="tour-title" style="margin: 0 0 30px 0;color:#111;">NEED MORE INFORMATION?  <br><button class="btn btn-line btn-line-yellow" data-toggle="modal" data-target="#contactModal">CONTACT US</button></h2>
+        </div>
+      </div>
+    </section>
+  {{/unless}}
+
+  {{#if tour.display.neighborhood}}
+  <section id="neighborhood" chlass="side-bg">
+    <div class="container">
+      <div class="row">
+      
+        <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+          <h1 class="tour-title">NEIGHBORHOOD</h1>
+          <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+          <div class="spacer-single"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6" data-animation="fadeInRight" data-delay="200">
+
+                <h5 class="tour-title" style="color: #FAB702;">What To Know</h5>
+                <p>{{tour.neighborhood.description}}</p>
+                <h5 class="tour-title" style="color: #FAB702;">Key Highlights</h5>
+
+           <p>                        
+          <ul class="highlight-col-3">
+            
+              {{#if tour.neighborhood.highlight1}}<li>{{tour.neighborhood.highlight1}}</li>{{/if}}
+              {{#if tour.neighborhood.highlight2}}<li>{{tour.neighborhood.highlight2}}</li>{{/if}}
+              {{#if tour.neighborhood.highlight3}}<li>{{tour.neighborhood.highlight3}}</li>{{/if}}
+              {{#if tour.neighborhood.highlight4}}<li>{{tour.neighborhood.highlight4}}</li>{{/if}}
+            
+          </ul>
+          </p>
+                    
+
+  
+  
+  
+  
+  
+                
+          
+        </div>
+        <div class="col-sm-6 text-center">
+          <div id="map" style="max-height: 250px;"></div>
+          <h6 class="tour-title" style="color: #FAB702;"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+            {{tour.property.full_address}}</h6>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{/if}}
+
+  {{#unless mls}}
+  {{#if tour.display.agent_info}}
+  <section id="agent-info" class="agent-info side-bg"
+           style="padding-bottom: 90px; background-size: cover !important;">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-2">
+              <figure>
+                <img src="{{tour.creator.picture}}" class="img-responsive" />
+              </figure>
+            </div>
+            <div class="col-sm-2">
+              <h5 class="tour-title agent-name">YOUR AGENT</h5>
+              <p>{{tour.creator.name.full}}</p>
+              {{#if tour.creator.title}}
+                <span style="display: block;"><strong>Title: </strong>{{tour.creator.title}}</span>
+              {{/if}}
+              {{#if tour.creator.brokerage}}
+                <span style="display: block;"><strong>Brokerage: </strong>{{tour.creator.brokerage}}</span>
+              {{/if}}
+            </div>
+            <div class="col-sm-5">
+              <h5 class="tour-title" style="color: #FAB702;">ABOUT ME</h5>
+              <div class="widget widget-address">
+                {{#if tour.creator.description}}
+                  <p style="margin-top: 20px;">{{tour.creator.description}}</p>
+                {{/if}}
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <h5 class="tour-title" style="color: #FAB702; margin-bottom: 0;">CONTACT</h5>
+              <div class="widget text-center">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="widget widget-address text-left" >
+                      <address>
+                        {{#if tour.creator.contact.phone}}
+                          <span><i class="fa fa-phone fa-lg" aria-hidden="true"></i>
+                  <a href="tel:{{tour.creator.contact.phone_link_format}}">{{tour.creator.contact.phone}}</a></span>
+                        {{/if}}
+                        {{#if tour.creator.address}}
+                          <span><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                            {{tour.creator.address}}</span>
+                        {{/if}}
+
+                        {{#if tour.creator.email}}
+                          <span>
+                  <i class="fa fa-envelope fa-lg" aria-hidden="true" style="font-size: 15px;"></i>
+                  <a href="mailto:{{tour.creator.email}}">{{tour.creator.email}}</a>
+                </span>
+                        {{/if}}
+                        {{#if tour.creator.website}}
+                          <span>
+                  <i class="fa fa-desktop fa-lg" aria-hidden="true"></i>
+                  <a href="{{tour.creator.website}}">{{tour.creator.website}}</a>
+                </span>
+                        {{/if}}
+                      </address>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{/if}}
+  {{/unless}}
+  <!-- Modal -->
+  <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form name="contactForm" id='contact_form' method="post" action='{{url}}/contact-form'>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title" id="myModalLabel">Send Your Agent Message</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div id='name_error' class='error'>Please enter your name.</div>
+                <div>
+                  <input type='text' name='name' id='name' class="form-control" placeholder="Your Name">
+                </div>
+
+                <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
+                <div>
+                  <input type='text' name='email' id='email' class="form-control" placeholder="Your Email">
+                </div>
+
+                <div id='phone_error' class='error'>Please enter your phone number.</div>
+                <div>
+                  <input type='text' name='phone' id='phone' class="form-control" placeholder="Your Phone">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div id='message_error' class='error'>Please enter your message.</div>
+                <div>
+                  <textarea name='message' id='message' class="form-control" placeholder="Your Message"></textarea>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <p id='submit' class="text-right">
+                  <input type='submit' id='send_message' value='Send Message' class="btn btn-line">
+                </p>
+                <div id='mail_success' class='success'>Your message has been sent successfully.</div>
+                <div id='mail_fail' class='error'>Sorry, error occured this time sending your message.</div>
+              </div>
+            </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{#section 'head'}}
+<link type="text/css" href="/ipanorama/ipanorama.css" rel="stylesheet">
+<link type="text/css" href="/ipanorama/ipanorama.theme.default.css" rel="stylesheet">
+{{#if theme_dark}}
+<link rel="stylesheet" href="/css/theme_color/dark.css" type="text/css">
+{{else}}
+<link rel="stylesheet" href="/css/theme_color/white.css" type="text/css">
+{{/if}}
+<style>
+  @media(min-width: 992px) {
+    header nav {
+      float: none;
+      text-align: center;
+    }
+    nav #mainmenu {
+      float: none;
+    }
+    #mainmenu li {
+      float: none;
+    }
+  }
+</style>
+{{/section}}
+{{#section 'javascript'}}
+<script type="text/javascript" src="/js/three.min.js"></script>
+<script type="text/javascript" src="/ipanorama/jquery.ipanorama.min.js"></script>
+<script src="/cropper/dist/cropper.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb11Abo1c1TUYczrx4_HWLLESjGIgdsZU"></script>
+<script>
+  {{#if tour.validGeocode}}
+  // When the window has finished loading create our google map below
+  google.maps.event.addDomListener(window, 'load', initMap);
+
+  function initMap() {
+    // Basic options for a simple Google Map
+    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+
+    var myLatlng = new google.maps.LatLng({{tour.neighborhood.lat}}, {{tour.neighborhood.lng}});
+
+    var mapOptions = {
+      // How zoomed in you want the map to start at (always required)
+      zoom: 15,
+      disableDefaultUI: true,
+      scrollwheel: false,
+
+      // The latitude and longitude to center the map (always required)
+
+      center: myLatlng, // New York
+
+      // How you would like to style the map.
+      // This is where you would paste any style found on Snazzy Maps.
+      {{#if theme_dark}}
+        styles: [
+          {
+            "stylers":[
+              {
+                "hue":"#ff1a00"
+              },
+              {
+                "invert_lightness":true
+              },
+              {
+                "saturation":-100
+              },
+              {
+                "lightness":33
+              },
+              {
+                "gamma":0.5
+              }
+            ]
+          },
+          {
+            "featureType":"water",
+            "elementType":"geometry",
+            "stylers":[
+              {
+                "color":"#2D333C"
+              }
+            ]
+          }
+        ]
+      {{else}}
+      styles: [
+        {
+          "featureType": "road.highway",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "hue": "#ffffff"
+            },
+            {
+              "saturation": -100
+            },
+            {
+              "lightness": 100
+            },
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape.natural",
+          "elementType": "all",
+          "stylers": [
+            {
+              "hue": "#ffffff"
+            },
+            {
+              "saturation": -100
+            },
+            {
+              "lightness": 100
+            },
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "all",
+          "stylers": [
+            {
+              "hue": "#ffe94f"
+            },
+            {
+              "saturation": 100
+            },
+            {
+              "lightness": 4
+            },
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "hue": "#ffe94f"
+            },
+            {
+              "saturation": 100
+            },
+            {
+              "lightness": 4
+            },
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "hue": "#333333"
+            },
+            {
+              "saturation": -100
+            },
+            {
+              "lightness": -74
+            },
+            {
+              "visibility": "off"
+            }
+          ]
+        }
+      ]
+      {{/if}}
+    };
+
+    // Get the HTML DOM element that will contain your map
+    // We are using a div with id="map" seen below in the <body>
+    var mapElement = document.getElementById('map');
+
+    // Create the Google Map using out element and options defined above
+    var map = new google.maps.Map(mapElement, mapOptions);
+
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      icon: '/images/map-marker.png',
+      title: 'Lorem Ipsum'
+    });
+  }
+  {{/if}}
+</script>
+{{/section}}

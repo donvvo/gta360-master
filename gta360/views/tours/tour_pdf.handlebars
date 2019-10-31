@@ -1,0 +1,225 @@
+<div id="content" class="no-bottom no-top">
+  <!-- revolution slider begin -->
+  <section id="section-slider" class="fullwidthbanner-container">
+    <a href="/tour/{{tour._id}}/edit" class="btn btn-line btn-edit slider-edit-btn">edit this tour</a>
+    <div class="revolution-slider">
+      <ul>
+        <li>
+          <!--  BACKGROUND IMAGE -->
+          <img src="{{#if tour.slider.image}}{{tour.slider.image}}{{else}}/images/placeholder/no_image_placeholder.png{{/if}}" alt="" />
+
+          <div class="tp-caption ultra-big-white customin customout start"
+               data-x="0"
+               data-y="center"
+               >
+            <span class="slider-title">{{#if tour.slider.title}}{{tour.slider.title}}{{else}}Please add slider title{{/if}}</span>
+          </div>
+
+          <div class="tp-caption sfb"
+               data-x="0"
+               data-y="335"
+               >
+            <a href="#agent-info" class="btn-slider">Book for a tour now!
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <!-- revolution slider close --> 
+
+  <!-- Property profile begin -->
+  <section class="side-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+          <h1>Property Info</h1>
+          <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+          <div class="spacer-single"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+          <form class="theme_form" method="POST" accept-charset="utf-8">
+            <input type="hidden" name="_csrf" value="{{csrf}}" id="">
+            <div class="row">
+              <div class="col-sm-4 text-center">
+                <figure>
+                  <img src="{{#if tour.property.image}}{{tour.property.image}}{{else}}/images/placeholder/placeholder_350x350.png{{/if}}" class="img-responsive" alt=""/>
+                </figure> 
+              </div> 
+              <div class="col-sm-8">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h2 class="no-margin-top">{{tour.property.name}}</h2>
+                  </div> 
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h4>{{tour.property.address}}</h4>
+                  </div> 
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h2>Description</h2>
+                    <p>{{tour.property.description}}</p>
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>   
+      </div>   
+    </div>
+  </section>
+  <!-- Property profile end -->
+
+  <!-- Gallery begin -->
+  <section id="section-portfolio" class="gallery no-bottom no-top">
+    <div class="container">
+      <!-- Section Heading -->
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+          <h1>Gallery</h1>
+          <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+          <div class="spacer-single"></div>
+        </div>
+      </div> 
+    </div>
+
+    <div id="gallery" class="gallery full-gallery de-gallery pf_full_width">
+      {{#each tour.gallery}}
+      <!-- gallery item -->
+      <div class="item">
+        <div class="picframe">
+          <a class="btn-magnific" href="{{../url}}/gallery/{{@index}}">
+            <span class="overlay">
+              <span class="pf_text">
+                <span class="project-name">{{title}}</span>
+              </span>
+            </span>
+          </a>
+          <img src="{{photo}}" alt="" />
+        </div>
+      </div>
+      <!-- close gallery item -->
+      {{/each}}
+    </div>
+
+    <div id="loader-area">
+      <div class="project-load"></div>
+    </div>
+  </section>
+  <!-- Gallery close -->
+
+  <section class="side-bg no-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+          <h1>Neighborhood Info</h1>
+          <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+          <div class="spacer-single"></div>
+        </div>
+     </div>
+      <div class="row">
+        <div class="col-sm-4 text-center">
+          <figure>
+            <img src="{{#if tour.neighborhood.photo}}{{tour.neighborhood.photo}}{{else}}/images/placeholder/profile_placeholder.png{{/if}}" class="img-responsive" alt=""/>
+          </figure> 
+        </div>
+        <div class="col-sm-8">
+          <h2>{{tour.neighborhood.name}}</h2>
+          <p>{{tour.neighborhood.description}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- section begin -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+          <h1>Key Features</h1>
+          <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+          <div class="spacer-single"></div>
+        </div>
+
+
+        <div class="col-md-4">
+          <h3><span class="id-color">{{tour.features.feature1.title}}</span></h3>
+          {{tour.features.feature1.description}}
+          <div class="spacer-single"></div>
+        </div>
+
+        <div class="col-md-4">
+          <h3><span class="id-color">{{tour.features.feature2.title}}</span></h3>
+          {{tour.features.feature2.description}}
+          <div class="spacer-single"></div>
+        </div>
+
+        <div class="col-md-4">
+          <h3><span class="id-color">{{tour.features.feature3.title}}</span></h3>
+          {{tour.features.feature3.description}}
+          <div class="spacer-single"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- section close -->
+
+  <section id="agent-info" class="agent-info side-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+          <h1>Agent Info</h1>
+          <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+          <div class="spacer-single"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-center">
+          <figure>
+            <img src="{{#if agent.picture}}{{agent.picture}}{{else}}/images/placeholder/profile_placeholder.png{{/if}}" class="img-responsive" alt=""/>
+          </figure> 
+        </div> 
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-sm-12">
+              <h2>{{agent.name.full}}</h2> 
+            </div> 
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <p>{{agent.description}}</p> 
+            </div> 
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <h2>Contact</h2>
+            </div> 
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Email</h3>
+              <h4><a href="mailto:{{agent.contact.email}}">{{agent.contact.email}}</a></h4>
+            </div> 
+            <div class="col-sm-6">
+              <h3>Phone</h3> 
+              <h4>{{agent.contact.phone}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{{#section 'head'}}
+{{#if theme_light}}
+<link rel="stylesheet" href="/css/light.css" type="text/css">
+{{/if}}
+{{/section}}

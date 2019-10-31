@@ -1,0 +1,92 @@
+<div id="content">
+  <div class="container inner-padding">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1>Sign Up</h1>
+            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+            <div class="spacer-single"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <p>Start ordering your tour today by joining Property Vision. By creating a free account with us, you can start
+            ordering your first tour within a minute! If you already have an account with us,
+              <a class="highlighted-link" href="/signin">
+                click to sign in.
+              </a></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            {{#if error}}
+              <div class="alert alert-danger alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                {{error}}
+              </div>
+            {{/if}}
+            <form class="theme_form" action="/signup" method="POST" accept-charset="utf-8">
+              <input type="hidden" name="_csrf" value="{{csrf}}" id="">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" name="Email" value="{{formValues.email}}"
+                           id="Email" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" class="form-control" name="first_name" value="{{formValues.name.first_name}}"
+                           required>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" class="form-control" name="last_name" value="{{formValues.name.last_name}}"
+                           required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" class="form-control" name="Password" value="" id="Password" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="Confirm-password">Confirm password</label>
+                    <input type="password" class="form-control" name="confirm_password" value=""
+                           id="Confirm-password" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <a href="/signin" style="float: left;">
+                    Already have an account?
+                  </a>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group text-right">
+                    <input type="submit" class="btn btn-line btn-white" value="Sign Up">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>   
+  </div> 
+</div>
+

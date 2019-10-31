@@ -1,0 +1,39 @@
+<!-- Content -->
+<div class="container project-view">
+  <div class="row">
+    <div class="col-md-9">
+      <!-- <h3 class="page-header">Demo:</h3> -->
+      <div class="img-container">
+        <img id="image" src="/images/placeholder/profile_placeholder.png" alt="Picture">
+      </div>
+    </div>
+    <div class="col-md-3 docs-buttons">
+      <form id="crop-form" class="theme_form profile-picture" action="{{url}}" method="post"
+            enctype="multipart/form-data" accept-charset="utf-8">
+        <h2>{{widgetTitle}}</h2>
+        <p>Drag the blue box to crop the image. Image must be less than 2MB</p>
+        <p>Please SAVE ALL THE OTHER CHANGES you made in the edit page before submitting the photo.</p>
+        <!-- <h3 class="page-header">Toolbar:</h3> -->
+        <div class="btn-group">
+
+          <label class="btn btn-line btn-line-black btn-upload" for="inputImage" title="Upload image file">
+            <span class="docs-tooltip" data-toggle="tooltip" title="Upload image">
+              <span class="fa fa-upload"></span>
+              upload
+            </span>
+          </label>
+          <a id="submit" class="btn btn-line btn-line-black">submit</a>
+
+          <input type="file" class="sr-only" id="inputImage" name="crop_image" filesize="2" accept="image/*" required>
+          <input type="hidden" name="width" id="width" value="" />
+          <input type="hidden" name="height" id="height" value="" />
+          <input type="hidden" name="x_coord" id="x_coord" value="" />
+          <input type="hidden" name="y_coord" id="y_coord" value="" />
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/js/cropper.js" type="text/javascript" charset="utf-8"></script>

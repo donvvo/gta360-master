@@ -1,0 +1,56 @@
+<link  href="/cropper/dist/cropper.min.css" rel="stylesheet">
+
+<!-- Content -->
+<div class="container project-view">
+  <div class="row">
+    <div class="col-md-9">
+      <!-- <h3 class="page-header">Demo:</h3> -->
+      <div class="img-container">
+        <img id="image" src="{{#if item.photo}}{{item.photo}}{{else}}/images/placeholder/profile_placeholder.png{{/if}}" alt="Picture">
+      </div>
+    </div>
+    <div class="col-md-3 docs-buttons">
+      <form id="crop-form" class="theme_form {{#unless forSubslider}}add-gallery-photo{{/unless}}" action="{{url}}" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+        {{#unless forSubslider}}
+        <div class="form-group">
+          <label for="tour_title">Name</label>
+          <input type="text" class="form-control de_light" name="item_title" value="{{photo.title}}" id="tour_title" required>
+        </div>
+        {{/unless}}
+        <h2>Edit Photo</h2>
+        <p>Upload a photo and drag the blue box for cropping.</p>
+        <div class="btn-group">
+          <label class="btn btn-line" for="inputImage" title="Upload image file">
+            <input type="file" class="sr-only" id="inputImage" name="crop_image" accept="image/*" required>
+            <span class="docs-tooltip" data-toggle="tooltip" title="Upload image">
+              <span class="fa fa-upload"></span>
+            </span>
+          </label>
+          <input type="hidden" name="width" id="width" value="" />
+          <input type="hidden" name="height" id="height" value="" />
+          <input type="hidden" name="x_coord" id="x_coord" value="" />
+          <input type="hidden" name="y_coord" id="y_coord" value="" />
+
+          <input type="submit" id="submit" class="btn btn-line btn-edit" value="Add This Photo">
+        </div>
+      </form>
+      <!-- Show the cropped image in modal -->
+      <div class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="getCroppedCanvasTitle">Cropped</h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <a class="btn btn-line" id="download" href="javascript:void(0);" download="cropped.jpg">Download</a>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.modal -->
+    </div>
+  </div>
+</div>
+<script src="/js/cropper.js" type="text/javascript" charset="utf-8"></script>

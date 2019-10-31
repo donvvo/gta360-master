@@ -1,0 +1,52 @@
+<link  href="/cropper/dist/cropper.min.css" rel="stylesheet">
+
+<!-- Content -->
+<div class="container project-view">
+  <div class="row">
+    <div class="col-md-9">
+      <!-- <h3 class="page-header">Demo:</h3> -->
+      <div class="img-container">
+        <img id="image" src="{{#if tour.slider.image}}{{tour.slider.image}}
+        {{else}}/images/placeholder/no_image_placeholder.png{{/if}}" alt="Picture">
+      </div>
+    </div>
+    <div class="col-md-3 docs-buttons">
+      <form id="crop-form" class="theme_form slider-edit" action="{{url}}" method="post"
+            enctype="multipart/form-data" accept-charset="utf-8">
+        <p>Drag the blue box to crop the image. Image must be less than 5MB</p>
+        <p>Please SAVE ALL THE OTHER CHANGES you made in the edit page before submitting the photo.</p>
+        <div class="form-group">
+          <h4>Slider Image</h4>
+          <p>Drag the blue box to crop the image.</p>
+          <div class="btn-group">
+            <label class="btn btn-line btn-line-black btn-upload" for="inputImage" title="Upload image file">
+              <span class="docs-tooltip" data-toggle="tooltip" title="Upload image">
+                <span class="fa fa-upload"></span>
+                upload
+              </span>
+            </label>
+
+            <input type="file" class="sr-only" id="inputImage" name="crop_image" filesize="5" accept="image/*">
+            <input type="hidden" name="width" id="width" value="" />
+            <input type="hidden" name="height" id="height" value="" />
+            <input type="hidden" name="x_coord" id="x_coord" value="" />
+            <input type="hidden" name="y_coord" id="y_coord" value="" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <h4>Slider Video</h4>
+          <label>
+            <input type="checkbox" name="slider_type" value="VIDEO" {{#if slider_video_checked}}checked{{/if}}/>
+            Include Video
+          </label><br />
+          <label for="slider_video">Vimeo Video URL</label>
+          <textarea class="form-control" name="slider_video">{{{tour.slider.video}}}</textarea>
+        </div>
+
+        <a id="submit" class="btn btn-line btn-line-black" value="Save">Save</a>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="/js/cropper.js" type="text/javascript" charset="utf-8"></script>

@@ -1,0 +1,1385 @@
+<div id="content" class="no-bottom no-top">
+    <!-- Tour settings section begin -->
+    <section id="TourProfile" class="side-bg no-bottom">
+      <form id="tour_profile_form" class="theme_form" method="POST" accept-charset="utf-8">
+        <div class="container inner-padding">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+              <h1>Tour Profile</h1>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer-single"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-xs-12">
+              {{> tour_profile_widget}}
+              <input type="hidden" name="tour_profile" value="true">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group text-right">
+                    <button type="submit" class="btn btn-line btn-edit" name="buttonSection"
+                            value="TourProfile">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+    <section id="TourSettings" class="side-bg no-top">
+      <form id="tour_settings_form" class="theme_form" method="POST" accept-charset="utf-8">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+              <h1>Tour Settings</h1>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer-single"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-xs-12">
+              <input type="hidden" name="tour_settings" value="true">
+              {{#if userAdminOrManager}}
+                <div class="row">
+                  <div class="col-sm-12">
+                    <label>Requested by</label>
+                    <div class="user-list" style="margin-bottom: 20px;">
+                      <a href="/user/{{creator._id}}">
+                        <div class="row">
+                          <div class="col-sm-2">
+                            <figure>
+                              <img src="{{#if creator.picture}}{{creator.picture}}{{else}}
+                          /images/placeholder/placeholder_350x350.png{{/if}}" class="img-responsive" alt=""/>
+                            </figure>
+                          </div>
+                          <div class="col-sm-7">
+                            <h3>{{creator.name.first_name}} {{creator.name.last_name}}</h3>
+                            <p>Email: {{creator.email}}
+                              <br />
+                              Phone: {{#if creator.contact.phone}}{{creator.contact.phone}}{{else}}N/A{{/if}}</p>
+                          </div>
+                          <div class="col-sm-3">
+                            <h3>User Type</h3>
+                            <p>{{creator.user_type_display}}</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              {{/if}}
+              {{#if userIsAdmin}}
+                <div class="row" style="margin-bottom: 40px;">
+                  <div class="col-sm-12">
+                    <label>Assigned to</label>
+                    {{#if manager}}
+                      <div class="user-list" style="margin-bottom: 20px;">
+                        <a href="/user/{{manager._id}}">
+                          <div class="row">
+                            <div class="col-sm-2">
+                              <figure>
+                                <img src="{{#if manager.picture}}{{manager.picture}}{{else}}
+                          /images/placeholder/placeholder_350x350.png{{/if}}" class="img-responsive" alt=""/>
+                              </figure>
+                            </div>
+                            <div class="col-sm-7">
+                              <h3>{{manager.name.first_name}} {{manager.name.last_name}}</h3>
+                              <p>Email: {{manager.email}}
+                                <br />
+                                Phone: {{#if manager.contact.phone}}{{manager.contact.phone}}{{else}}N/A{{/if}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                              <h3>User Type</h3>
+                              <p>{{manager.user_type_display}}</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="text-center">
+                        <a href="/tour/{{tour._id}}/edit/manager" class="btn btn-line btn-margin">
+                          Assign Another Photographer</a>
+                      </div>
+                    {{else}}
+                      <div class="text-center">
+                        <a href="/tour/{{tour._id}}/edit/manager" class="btn btn-line btn-margin">
+                          Please Assign a Photographer</a>
+                      </div>
+                    {{/if}}
+                  </div>
+                </div>
+              {{/if}}
+              {{> tour_settings_widget}}
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group services-checkboxes">
+                    <label>Tour Theme</label>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        {{#each tour_theme}}
+                          <label class="radio-inline">
+                            <input type="radio" name="tour_theme" value="{{value}}" {{#if checked}}checked{{/if}}/>{{name}}
+                          </label>
+                        {{/each}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{#if userAdminOrManager}}
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group services-checkboxes">
+                      <label>Tour Status</label>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          {{#unless tour.isDelivered}}
+                            {{#each tour_status}}
+                              <label class="radio-inline">
+                                <input type="radio" name="tour_status" value="{{value}}" {{#if checked}}checked{{/if}}/>{{name}}
+                              </label>
+                            {{/each}}
+                            {{#if tourDeliverable}}
+                              <button id="deliverButton" class="btn btn-line btn-line-black"
+                                 style="float: right; background: none;">
+                                Deliver This Tour</button>
+                              <div id='deliver_fail' class='error' style="margin-top: 5px;">
+                                Sorry, error occured this time saving your form.</div>
+                            {{/if}}
+                          {{else}}
+                            <label>This tour is already delivered</label>
+                            <button id="deliverButton" class="btn btn-line btn-line-black"
+                               style="float: right; background: none;">
+                                Deliver This Tour Again</button>
+                            <div id='deliver_fail' class='error' style="margin-top: 5px;">
+                              Sorry, error occured this time saving your form.</div>
+                          {{/unless}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/if}}
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group text-right">
+                    <button type="submit" name="buttonSection" class="btn btn-line btn-edit"
+                            value="TourSettings">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+  <!-- Tour settings section end -->
+
+    {{#if userAdminOrManager}}
+      <section id="MainSlider" class="side-bg no-bottom no-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+              <h1>Main Slider</h1>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer-single"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- revolution slider begin -->
+      {{> main_slider_widget tourEdit=true}}
+      <!-- revolution slider close -->
+    {{/if}}
+
+    <!-- Property profile begin -->
+    <section id="PropertyHighlights" class="no-bottom">
+      <form id="property_highlights_form" method="POST" accept-charset="utf-8">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+              <h1>Property Highlights</h1>
+              <div class="text-left" style="margin-top: 40px;">
+                <h5>
+                  <span>What's This <i class="fa fa-question"></i></span>
+                </h5>
+                <p>This section highlights key items for your property. To see what it would look like,
+                  <a href="/301queensmillcrt" class="highlighted-link" target="_blank">
+                    click here</a>. Please take a look at the available options below and decide which items will best
+                  represent your property. Number of highlights you can select are 4 or 6. Once you decide, click 'Display'
+                  or 'Hide' to display or hide that item in your tour. Please add descriptions for each item in the
+                  corresponding textbox below. Once you are done, click 'Save' button to save your changes.</p>
+              </div>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer-single"></div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="highlights-error" class="alert alert-danger alert-dismissable"
+                       style="display: none; padding-bottom: 10px;">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                  </div>
+                  <div class="spacer-single"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <input type="hidden" name="property_highlights" value="true">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-square-feet.png" class="highlight-icons" />
+                        <br />
+                        <span>Square Feet</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="square_feet_display" value="display"
+                                 {{#if tour.highlights.square_feet.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="square_feet_display" value="hide"
+                                 {{#unless tour.highlights.square_feet.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="square_feet_detail"
+                               value="{{tour.highlights.square_feet.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-bath.png" class="highlight-icons" />
+                        <br />
+                        <span>Bath</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="bath_display" value="display"
+                                 {{#if tour.highlights.bath.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="bath_display" value="hide"
+                                 {{#unless tour.highlights.bath.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="bath_detail"
+                               value="{{tour.highlights.bath.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-bedroom.png" class="highlight-icons" />
+                        <br />
+                        <span>Bedroom</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="bedroom_display" value="display"
+                                 {{#if tour.highlights.bedroom.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="bedroom_display" value="hide"
+                                 {{#unless tour.highlights.bedroom.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="bedroom_detail"
+                               value="{{tour.highlights.bedroom.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-floors.png" class="highlight-icons" />
+                        <br />
+                        <span>Floors</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="floors_display" value="display"
+                                 {{#if tour.highlights.floors.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="floors_display" value="hide"
+                                 {{#unless tour.highlights.floors.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="floors_detail"
+                               value="{{tour.highlights.floors.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-inlaw-suite.png" class="highlight-icons" />
+                        <br />
+                        <span>Inlaw Suite</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="inlaw_suite_display" value="display"
+                                 {{#if tour.highlights.inlaw_suite.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="inlaw_suite_display" value="hide"
+                                 {{#unless tour.highlights.inlaw_suite.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="inlaw_suite_detail"
+                               value="{{tour.highlights.inlaw_suite.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-car-parking.png" class="highlight-icons" />
+                        <br />
+                        <span>Car Parking</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="car_parking_display" value="display"
+                                 {{#if tour.highlights.car_parking.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="car_parking_display" value="hide"
+                                 {{#unless tour.highlights.car_parking.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="car_parking_detail"
+                               value="{{tour.highlights.car_parking.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-locker.png" class="highlight-icons" />
+                        <br />
+                        <span>Locker</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="locker_display" value="display"
+                                 {{#if tour.highlights.locker.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="locker_display" value="hide"
+                                 {{#unless tour.highlights.locker.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="locker_detail"
+                               value="{{tour.highlights.locker.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-parking.png" class="highlight-icons" />
+                        <br />
+                        <span>Parking</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="parking_display" value="display"
+                                 {{#if tour.highlights.parking.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="parking_display" value="hide"
+                                 {{#unless tour.highlights.parking.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="parking_detail"
+                               value="{{tour.highlights.parking.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-kitchens.png" class="highlight-icons" />
+                        <br />
+                        <span>Kitchens</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="kitchens_display" value="display"
+                                 {{#if tour.highlights.kitchens.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="kitchens_display" value="hide"
+                                 {{#unless tour.highlights.kitchens.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="kitchens_detail"
+                               value="{{tour.highlights.kitchens.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-pool.png" class="highlight-icons" />
+                        <br />
+                        <span>Pool</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="pool_display" value="display"
+                                 {{#if tour.highlights.pool.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="pool_display" value="hide"
+                                 {{#unless tour.highlights.pool.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="pool_detail"
+                               value="{{tour.highlights.pool.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-basement-apt.png" class="highlight-icons" />
+                        <br />
+                        <span>Basement Apartment</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="basement_apt_display" value="display"
+                                 {{#if tour.highlights.basement_apt.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="basement_apt_display" value="hide"
+                                 {{#unless tour.highlights.basement_apt.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="basement_apt_detail"
+                               value="{{tour.highlights.basement_apt.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-lot-size.png" class="highlight-icons" />
+                        <br />
+                        <span>Lot Size</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="lot_size_display" value="display"
+                                 {{#if tour.highlights.lot_size.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="lot_size_display" value="hide"
+                                 {{#unless tour.highlights.lot_size.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="lot_size_detail"
+                               value="{{tour.highlights.lot_size.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-irregular-lot.png" class="highlight-icons" />
+                        <br />
+                        <span>Irregular Lot</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="irregular_lot_display" value="display"
+                                 {{#if tour.highlights.irregular_lot.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="irregular_lot_display" value="hide"
+                                 {{#unless tour.highlights.irregular_lot.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="irregular_lot_detail"
+                               value="{{tour.highlights.irregular_lot.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-ttc.png" class="highlight-icons" />
+                        <br />
+                        <span>TTC</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="ttc_display" value="display"
+                                 {{#if tour.highlights.ttc.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="ttc_display" value="hide"
+                                 {{#unless tour.highlights.ttc.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="ttc_detail"
+                               value="{{tour.highlights.ttc.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-highway.png" class="highlight-icons" />
+                        <br />
+                        <span>Access to Highway</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="highway_display" value="display"
+                                 {{#if tour.highlights.highway.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="highway_display" value="hide"
+                                 {{#unless tour.highlights.highway.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="highway_detail"
+                               value="{{tour.highlights.highway.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-parks.png" class="highlight-icons" />
+                        <br />
+                        <span>Parks</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="parks_display" value="display"
+                                 {{#if tour.highlights.parks.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="parks_display" value="hide"
+                                 {{#unless tour.highlights.parks.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="parks_detail"
+                               value="{{tour.highlights.parks.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-schools.png" class="highlight-icons" />
+                        <br />
+                        <span>Schools</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="schools_display" value="display"
+                                 {{#if tour.highlights.schools.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="schools_display" value="hide"
+                                 {{#unless tour.highlights.schools.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="schools_detail"
+                               value="{{tour.highlights.schools.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-year-build.png" class="highlight-icons" />
+                        <br />
+                        <span>Year Build</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="year_build_display" value="display"
+                                 {{#if tour.highlights.year_build.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="year_build_display" value="hide"
+                                 {{#unless tour.highlights.year_build.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="year_build_detail"
+                               value="{{tour.highlights.year_build.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-new-build.png" class="highlight-icons" />
+                        <br />
+                        <span>New Build</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="new_build_display" value="display"
+                                 {{#if tour.highlights.new_build.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="new_build_display" value="hide"
+                                 {{#unless tour.highlights.new_build.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="new_build_detail"
+                               value="{{tour.highlights.new_build.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-custom-build.png" class="highlight-icons" />
+                        <br />
+                        <span>Custom Build</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="custom_build_display" value="display"
+                                 {{#if tour.highlights.custom_build.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="custom_build_display" value="hide"
+                                 {{#unless tour.highlights.custom_build.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="custom_build_detail"
+                               value="{{tour.highlights.custom_build.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-6 highlight-col">
+                      <div class="de_count">
+                        <img src="/images/icons/icon-ravine-lot.png" class="highlight-icons" />
+                        <br />
+                        <span>Ravine Lot</span>
+                      </div>
+                      <div class="form-group">
+
+                        <label class="radio-inline">
+                          <input type="radio" name="ravine_lot_display" value="display"
+                                 {{#if tour.highlights.ravine_lot.display}}checked{{/if}}/>Display
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="ravine_lot_display" value="hide"
+                                 {{#unless tour.highlights.ravine_lot.display}}checked{{/unless}}/>Hide
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail (max 10 characters)</label>
+                        <input type="text" class="form-control" name="ravine_lot_detail"
+                               value="{{tour.highlights.ravine_lot.detail}}" maxlength="10"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group text-right">
+                    <input type="hidden" name="check_num_selected" value="">
+                    <button type="submit" class="btn btn-line btn-edit" name="buttonSection"
+                            value="PropertyHighlights">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+    <!-- Property profile end -->
+
+    {{#if userAdminOrManager}}
+      <!-- Gallery begin -->
+      <section id="TourGallery" class="gallery no-bottom">
+        <div class="container">
+          <!-- Section Heading -->
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+              <h1>Gallery</h1>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer-single"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <a href="{{url}}/gallery/edit" class="btn btn-line btn-edit">Edit Photos</a>
+            </div>
+          </div>
+          <div class="spacer-single"></div>
+        </div>
+
+        <div id="gallery" class="gallery full-gallery de-gallery pf_full_width wow fadeInUp" data-wow-delay=".3s">
+          {{#each tour.gallery}}
+            <!-- gallery item -->
+            <div class="item">
+              <div class="picframe">
+                <a href="{{photo}}" class="image-popup-gallery">
+            <span class="overlay">
+              <span class="pf_text">
+                <span class="project-name">{{name}}</span>
+              </span>
+            </span>
+                </a>
+                <img src="{{photo}}" alt="" />
+              </div>
+            </div>
+            <!-- close gallery item -->
+          {{/each}}
+        </div>
+
+        <div id="loader-area">
+          <div class="project-load"></div>
+        </div>
+      </section>
+      <!-- Gallery close -->
+    {{/if}}
+
+    {{#if userAdminOrManager}}
+      <section id="VirtualTour" class="side-bg no-bottom" style="padding-bottom: 40px;">
+        <form id="virtual_tour_form" class="theme_form" method="POST" accept-charset="utf-8">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h1>3D Tour</h1>
+                    <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+                    <div class="spacer-single"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <input type="hidden" name="virtual_tour" value="true">
+                    <div class="form-group">
+                      <h4>Section Display</h4>
+                      <label class="radio-inline">
+                        <input type="radio" name="panoramic_images_section" value="display"
+                               {{#if tour.display.panoramicImages}}checked{{/if}}/>Display
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="panoramic_images_section" value="hide"
+                               {{#unless tour.display.panoramicImages}}checked{{/unless}}/>Hide
+                      </label>
+                    </div>
+                    <div class="form-group text-right">
+                      <button type="submit" class="btn btn-line btn-edit" name="buttonSection"
+                              value="VirtualTour">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                {{> virtual_tour_widget tourEdit=true}}
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+    {{/if}}
+
+    <section id="OpenHouseDate" class="no-bottom">
+      <form id="open_house_date_form" class="theme_form" method="POST" accept-charset="utf-8">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+              <h1>Open House Date</h1>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer-single"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <input type="hidden" name="open_house_date" value="true">
+              <div class="form-group">
+                <h4>Section Display</h4>
+                <label class="radio-inline">
+                  <input type="radio" name="open_house_section" value="display"
+                         {{#if tour.display.open_house}}checked{{/if}}/>Display
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="open_house_section" value="hide"
+                         {{#unless tour.display.open_house}}checked{{/unless}}/>Alternate Text
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="form-group">
+                    <label for="tour_schedule">Open House Date 1 Start</label>
+                    <input type="text" class="form-control datetime-picker" name="open_house_date1"
+                           value="{{tour.open_house_date1}}" id="tour_schedule">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label for="tour_schedule">End</label>
+                    <input type="text" class="form-control time-picker" name="open_house_date1_end"
+                           value="{{tour.open_house_date1_end}}" id="tour_schedule">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="form-group">
+                    <label for="tour_schedule">Open House Date 2 Start</label>
+                    <input type="text" class="form-control datetime-picker" name="open_house_date2"
+                           value="{{tour.open_house_date2}}" id="tour_schedule">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label for="tour_schedule">End</label>
+                    <input type="text" class="form-control time-picker" name="open_house_date2_end"
+                           value="{{tour.open_house_date2_end}}" id="tour_schedule">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="form-group">
+                    <label for="tour_schedule">Open House Date 3 Start</label>
+                    <input type="text" class="form-control datetime-picker" name="open_house_date3"
+                           value="{{tour.open_house_date3}}" id="tour_schedule">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label for="tour_schedule">End</label>
+                    <input type="text" class="form-control time-picker" name="open_house_date3_end"
+                           value="{{tour.open_house_date3_end}}" id="tour_schedule">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="form-group">
+                    <label for="tour_schedule">Open House Date 4 Start</label>
+                    <input type="text" class="form-control datetime-picker" name="open_house_date4"
+                           value="{{tour.open_house_date4}}" id="tour_schedule">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label for="tour_schedule">End</label>
+                    <input type="text" class="form-control time-picker" name="open_house_date4_end"
+                           value="{{tour.open_house_date4_end}}" id="tour_schedule">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <label>Alternate Text</label>
+              <textarea name="open_house_alternate_text" class="form-control" rows="3"
+                        placeholder="Alternate Text for this section." maxlength="100">{{tour.open_house_alternate_text}}</textarea>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group text-right">
+                <button type="submit" class="btn btn-line btn-edit" name="buttonSection"
+                        value="OpenHouseDate">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section id="OfferPresentationDate" class="no-bottom">
+      <form id="offer_presentation_date_form" class="theme_form" method="POST" accept-charset="utf-8">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+              <h1>Offer Presentation Date</h1>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer-single"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <input type="hidden" name="offer_presentation_date" value="true">
+              <div class="form-group">
+                <h4>Section Display</h4>
+                <label class="radio-inline">
+                  <input type="radio" name="offer_presentation_section" value="display"
+                         {{#if tour.display.offer_presentation}}checked{{/if}}/>Display
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="offer_presentation_section" value="hide"
+                         {{#unless tour.display.offer_presentation}}checked{{/unless}}/>Alternate Text
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="form-group">
+                <label for="tour_schedule">Offer Presentation Date</label>
+                <input type="text" class="form-control datetime-picker" name="offer_date"
+                       value="{{tour.offer_date}}" id="tour_schedule">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <label>Alternate Text</label>
+              <textarea name="offer_date_alternate_text" class="form-control" rows="3"
+                        placeholder="Alternate Text for this section." maxlength="100">{{tour.offer_date_alternate_text}}</textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group text-right">
+                <button type="submit" class="btn btn-line btn-edit btn-margin" name="buttonSection"
+                        value="OfferPresentationDate">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- section begin -->
+    <section id="PropertyDetails" class="no-bottom">
+      <form id="property_details_form" class="theme_form" method="POST" accept-charset="utf-8">
+        <div class="container">
+          <input type="hidden" name="property_details" value="true">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+              <h1>Property Details</h1>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer-single"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3 text-center">
+              <figure>
+                <img src="{{#if tour.property.image}}{{tour.property.image}}
+                {{else}}/images/placeholder/profile_placeholder.png{{/if}}" class="img-responsive" alt=""/>
+                <a href="{{url}}/property-photo" class="btn btn-line btn-margin btn-magnific">Change Photo</a>
+                <p class="small-caption">Please save all the other changes first before changing the photo.</p>
+              </figure>
+            </div>
+            <div class="col-sm-9">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <h4>Section Display</h4>
+                    <label class="radio-inline">
+                      <input type="radio" name="property_details_section" value="display"
+                             {{#if tour.display.property_details}}checked{{/if}}/>Display
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="property_details_section" value="hide"
+                             {{#unless tour.display.property_details}}checked{{/unless}}/>Hide
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="">Property Description (max 400 characters)</label>
+                    <textarea name="feature_description" class="form-control" rows="6"
+                              placeholder="Description of this property" maxlength="400">{{tour.features.description}}</textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="">Highlight 1 (max 30 characters)</label>
+                        <input type="text" class="form-control" name="feature_highlight1"
+                               value="{{tour.features.highlight1}}" placeholder="Highlight 1" maxlength="30">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="">Highlight 2 (max 30 characters)</label>
+                        <input type="text" class="form-control" name="feature_highlight2"
+                               value="{{tour.features.highlight2}}" placeholder="Highlight 2" maxlength="30">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="">Highlight 3 (max 30 characters)</label>
+                        <input type="text" class="form-control" name="feature_highlight3"
+                               value="{{tour.features.highlight3}}" placeholder="Highlight 3" maxlength="30">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="">Highlight 4 (max 30 characters)</label>
+                        <input type="text" class="form-control" name="feature_highlight4"
+                               value="{{tour.features.highlight4}}" placeholder="Highlight 4" maxlength="30">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="">Highlight 5 (max 30 characters)</label>
+                        <input type="text" class="form-control" name="feature_highlight5"
+                               value="{{tour.features.highlight5}}" placeholder="Highlight 5" maxlength="30">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="">Highlight 6 (max 30 characters)</label>
+                        <input type="text" class="form-control" name="feature_highlight6"
+                               value="{{tour.features.highlight6}}" placeholder="Highlight 6" maxlength="30">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="">Highlight 7 (max 30 characters)</label>
+                        <input type="text" class="form-control" name="feature_highlight7"
+                               value="{{tour.features.highlight7}}" placeholder="Highlight 7" maxlength="30">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="">Highlight 8 (max 30 characters)</label>
+                        <input type="text" class="form-control" name="feature_highlight8"
+                               value="{{tour.features.highlight8}}" placeholder="Highlight 8" maxlength="30">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="">Highlight 9 (max 30 characters)</label>
+                        <input type="text" class="form-control" name="feature_highlight9"
+                               value="{{tour.features.highlight9}}" placeholder="Highlight 9" maxlength="30">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="">Highlight 10 (max 30 characters)</label>
+                        <input type="text" class="form-control" name="feature_highlight10"
+                               value="{{tour.features.highlight10}}" placeholder="Highlight 10" maxlength="30">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="">Highlight 11 (max 30 characters)</label>
+                        <input type="text" class="form-control" name="feature_highlight11"
+                               value="{{tour.features.highlight11}}" placeholder="Highlight 11" maxlength="30">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="">Highlight 12 (max 30 characters)</label>
+                        <input type="text" class="form-control" name="feature_highlight12"
+                               value="{{tour.features.highlight12}}" placeholder="Highlight 12" maxlength="30">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 text-right">
+              <div class="form-group">
+                <button type="submit" class="btn btn-line btn-edit" name="buttonSection"
+                        value="PropertyDetails">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+    <!-- section close -->
+
+  <section id="Neighborhood" class="side-bg no-bottom edit-form-section">
+    <form id="neighborhood_form" class="theme_form" method="POST" accept-charset="utf-8">
+      <div class="container">
+        <input type="hidden" name="neighborhood_form" value="true" id="">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+            <h1>Neighborhood Info</h1>
+            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+            <div class="spacer-single"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <h4>Section Display</h4>
+              <label class="radio-inline">
+                <input type="radio" name="neighborhood_section" value="display"
+                       {{#if tour.display.neighborhood}}checked{{/if}}/>Display
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="neighborhood_section" value="hide"
+                       {{#unless tour.display.neighborhood}}checked{{/unless}}/>Hide
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <h3 style="margin-top: 0;">Info</h3>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="">Description (max 450 characters)</label>
+                  <textarea name="neighborhood_description" class="form-control" rows="4"
+                            placeholder="Neighborhood description"
+                            maxlength="450">{{tour.neighborhood.description}}</textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="">Highlight 1 (max 30 characters)</label>
+                  <input type="text" class="form-control" name="neighborhood_highlight1"
+                         value="{{tour.neighborhood.highlight1}}" placeholder="Highlight" maxlength="30">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="">Highlight 2 (max 30 characters)</label>
+                  <input type="text" class="form-control" name="neighborhood_highlight2"
+                         value="{{tour.neighborhood.highlight2}}" placeholder="Highlight" maxlength="30">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="">Highlight 3 (max 30 characters)</label>
+                  <input type="text" class="form-control" name="neighborhood_highlight3"
+                         value="{{tour.neighborhood.highlight3}}" placeholder="Highlight" maxlength="30">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="">Highlight 4 (max 30 characters)</label>
+                  <input type="text" class="form-control" name="neighborhood_highlight4"
+                         value="{{tour.neighborhood.highlight4}}" placeholder="Highlight" maxlength="30">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 text-right">
+            <div class="form-group">
+              <button type="submit" class="btn btn-line btn-edit" name="buttonSection"
+                      value="Neighborhood">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+
+    <section id="AgentProfile" class="agent-info side-bg edit-form-section">
+      <form id="agent_profile_form" class="theme_form" method="POST" accept-charset="utf-8">
+        <div class="container">
+          <input type="hidden" name="agent_profile" value="true">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+              <h1>Agent Info</h1>
+              <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+              <div class="spacer-single"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3 text-center">
+              <figure>
+                <img src="{{#if creator.picture}}{{creator.picture}}
+                {{else}}/images/placeholder/profile_placeholder.png{{/if}}" class="img-responsive" alt=""/>
+                <a href="/user/{{creator._id}}/edit/photo?tour={{tour._id}}"
+                   class="btn btn-line btn-margin btn-magnific">Change Photo</a>
+                <p class="small-caption">Please save all the other changes first before changing the photo.</p>
+              </figure>
+            </div>
+            <div class="col-sm-9">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <h4>Section Display</h4>
+                    <label class="radio-inline">
+                      <input type="radio" name="agent_info_section" value="display"
+                             {{#if tour.display.agent_info}}checked{{/if}}/>Display
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="agent_info_section" value="hide"
+                             {{#unless tour.display.agent_info}}checked{{/unless}}/>Hide
+                    </label>
+                  </div>
+                </div>
+              </div>
+              {{> profile_edit_widget profile_user=creator}}
+              <div class="row">
+                <div class="col-sm-12 text-right">
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-line btn-edit" name="buttonSection"
+                            value="AgentProfile">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+
+  <section class="no-top">
+    <form id="saveall_form" method="POST" accept-charset="utf-8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <p>Please review your changes for each section. Once you are satisfied, you can save all the changes
+            in each section by clicking 'Save All' button.</p>
+            <div class="form-group">
+              <input type="submit" id="SaveAllButton" class="btn btn-line btn-edit" style="width: 100%;"
+                      value="Save All">
+              <div id='saveall_success' class='success'>Your tour has been saved successfully.</div>
+              <div id='saveall_fail' class='error' style="margin-top: 5px;">
+                Sorry, error occured this time saving your form.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>
+
+{{#if deliver}}
+  <div class="modal fade" id="tourDeliverModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title" id="myModalLabel">Tour Has Been Delivered</h3>
+        </div>
+        <div class="modal-body">
+          <p>This tour has been successfully delivered to the client.</p>
+          <div class="text-center">
+            <button type="button" class="btn btn-line btn-line-black" style="background: none;"
+                    data-dismiss="modal" aria-label="Close">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}
+
+{{#section 'javascript'}}
+<script src="/cropper/dist/cropper.min.js"></script>
+<script type="text/javascript" src="/js/three.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+{{#if deliver}}
+$('#tourDeliverModal').modal()
+{{/if}}
+
+$('#saveall_form').submit(function(e) {
+  e.preventDefault()
+
+  if ($('#tour_profile_form').valid() && $('#tour_settings_form').valid() && $('#property_highlights_form').valid()
+    {{#if userAdminOrManager}}&& $('#virtual_tour_form').valid(){{/if}} && $('#open_house_date_form').valid()
+    && $('#offer_presentation_date_form').valid() && $('#property_details_form').valid()
+    && $('#neighborhood_form').valid() && $('#agent_profile_form').valid()) {
+
+    // Disable submit button just after the form processed 1st time successfully.
+    $('#SaveAllButton').attr({'disabled' : 'true', 'value' : 'Sending...' });
+
+    /* Edit */
+    var serializedForm = $('form').serialize().concat('&buttonSection=SaveAll')
+
+    /* Post Ajax function of jQuery to get all the data from the submission of the form as soon as the form sends the values to email.php*/
+    $.post($(this).attr('action'), serializedForm, function(result){
+      location.reload()
+    }).fail(function() {
+      $('#saveall_fail').text('Sorry, error occured this time saving your form.')
+      $('#SaveAllButton').removeAttr('disabled').attr('value', 'Save All')
+      $('#saveall_fail').fadeIn(500)
+    })
+  }
+  else {
+    $('#saveall_fail').text('Some section is incomplete or invalid. Please review your changes.')
+    $('#saveall_fail').fadeIn(500)
+  }
+})
+
+  $('#deliverButton').click(function(e) {
+    e.preventDefault()
+
+    $(this).attr({'disabled' : 'true', 'value' : 'Delivering...' });
+
+    $.post("{{url}}/deliver", function(result){
+      window.location = '{{url}}?deliver=true'
+    }).fail(function() {
+      $('#deliver_fail').text('Sorry, error occured this time delivering this tour.')
+      $('#deliverButton').removeAttr('disabled').attr('value', 'Deliver This Tour')
+      $('#deliver_fail').fadeIn(500)
+    })
+  })
+</script>
+{{/section}}

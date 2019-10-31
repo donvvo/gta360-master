@@ -1,0 +1,57 @@
+<div id="content">
+  <div class="container inner-padding">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+        <h1>Edit Profile</h1>
+        <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+        <div class="spacer-single"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <form class="theme_form" method="POST" accept-charset="utf-8">
+          <input type="hidden" name="_csrf" value="{{csrf}}" id="">
+          <div class="row">
+            <div class="col-sm-3 text-center">
+              <figure>
+                <img src="{{#if profile_user.picture}}{{profile_user.picture}}
+                {{else}}/images/placeholder/profile_placeholder.png{{/if}}" class="img-responsive" alt=""/>
+              </figure> 
+              <a href="{{url}}/photo" class="btn btn-line btn-margin btn-magnific"
+                 style="margin-top: 10px;">Change Photo</a>
+            </div> 
+            <div class="col-sm-9">
+              {{> profile_edit_widget}}
+
+              {{#if permission}}
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="user_type">User Type</label><br />
+
+                      <input type="radio" name="user_type" value="ADMIN" {{#if user_type.ADMIN}}checked{{/if}}> Admin
+                      <input type="radio" name="user_type" value="MANAGER" {{#if user_type.MANAGER}}checked{{/if}}
+                             style="margin-left: 8px;"> Photographer
+                      <input type="radio" name="user_type" value="CLIENT" {{#if user_type.CLIENT}}checked{{/if}}
+                             style="margin-left: 8px;"> Client
+                    </div>
+                  </div>
+                </div>
+              {{/if}}
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <input type="submit" class="btn btn-line btn-edit" value="Save">
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>   
+    </div>   
+  </div> 
+</div>
+

@@ -1,0 +1,33 @@
+<div id="content">
+  <div class="container inner-padding">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center wow fadeInUp">
+        <h1>Request a New Tour</h1>
+        <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+        <div class="spacer-single"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-xs-12">
+        <form class="theme_form" method="POST" accept-charset="utf-8">
+          <input type="hidden" name="_csrf" value="{{csrf}}" id="">
+          <div class="row">
+            <div class="col-sm-12">
+              <p>Please enter in some general information necessary to get started with your tour request.
+                The information will help us and our representatives create a tour for your listing.</p>
+            </div>
+          </div>
+          {{> tour_profile_widget}}
+          {{> tour_settings_widget}}
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group text-right">
+                <input type="submit" class="btn btn-line btn-edit" value="Request">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>   
+    </div>   
+  </div> 
+</div>

@@ -1,0 +1,77 @@
+<div id="content">
+  <form method="post">
+    <div class="container inner-padding">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <h1>Service Prices</h1>
+          <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+          <div class="spacer-single"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h3 style="margin-bottom: 20px;">Video Services</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Small Package</label>
+            <input type="text" class="form-control" name="videoSmall"
+                   value="{{services.videoPackagesPricing.smallPricing}}" required>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Medium Package</label>
+            <input type="text" class="form-control" name="videoMedium"
+                   value="{{services.videoPackagesPricing.mediumPricing}}" required>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Large Package</label>
+            <input type="text" class="form-control" name="videoLarge"
+                   value="{{services.videoPackagesPricing.largePricing}}" required>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 20px;">
+        <div class="col-sm-12">
+          <h3 style="margin-bottom: 20px;">Photography Services</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Small Package</label>
+            <input type="text" class="form-control" name="photoSmall"
+                   value="{{services.photoPackagesPricing.smallPricing}}" required>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Medium Package</label>
+            <input type="text" class="form-control" name="photoMedium"
+                   value="{{services.photoPackagesPricing.mediumPricing}}" required>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Large Package</label>
+            <input type="text" class="form-control" name="photoLarge"
+                   value="{{services.photoPackagesPricing.largePricing}}" required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group text-right">
+            <input type="submit" class="btn btn-line btn-white" value="Save">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
