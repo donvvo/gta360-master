@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.4.11",
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^5.0.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.13.2",
     "connect": "^2.30.2",
